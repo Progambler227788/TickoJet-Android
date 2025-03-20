@@ -21,36 +21,30 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Find the TextView
-        val helloText = findViewById<TextView>(R.id.tv_username)
-
-        // Set initial transparency and position
-        helloText.alpha = 0f
-        helloText.translationX = -100f // Start off-screen to the left
-
-        // Animate the TextView
-        helloText.animate()
-            .alpha(1f) // Fade in
-            .translationX(0f) // Slide to the original position
-            .setDuration(1000) // 1 second
-            .setInterpolator(android.view.animation.AccelerateDecelerateInterpolator()) // Smooth easing
-            .start()
 
         // Animate Profile Image
         val profileImage = findViewById<CircleImageView>(R.id.profile_image)
-        profileImage.scaleX = 0f
-        profileImage.scaleY = 0f
-        profileImage.rotation = 0f
+        // Set initial scale
+        profileImage.scaleX = 1f
+        profileImage.scaleY = 1f
+
+        // Create the pop-out animation
         profileImage.animate()
-            .scaleX(1f)
-            .scaleY(1f)
-            .rotation(360f)
-            .setDuration(1000)
-            .setInterpolator(OvershootInterpolator())
+            .scaleX(1.5f) // Expand to 120% size
+            .scaleY(1.5f)
+            .setDuration(600) // 600ms for expansion
+            .withEndAction {
+                // Shrink back to original size
+                profileImage.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(600) // 600ms for shrinking
+                    .start()
+            }
             .start()
 
         // Customize Profile Image Border
-        profileImage.borderColor = ContextCompat.getColor(this, R.color.theme_primary)
+        profileImage.borderColor = ContextCompat.getColor(this, R.color.white)
         profileImage.borderWidth = 4
 
 
