@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors -->
+    <color name="deep_orange">#FF5722</color>
+    <color name="deep_orange_dark">#E64A19</color>
+    <color name="sky_blue">#03A9F4</color>
+    <color name="sky_blue_dark">#0288D1</color>
+
+    <!-- Background Colors -->
+    <color name="background_light">#F5F5F5</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1E1E</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_on_dark">#FFFFFF</color>
+
+    <!-- Status Colors -->
+    <color name="error_red">#D32F2F</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="warning_orange">#FFA000</color>
+
+    <!-- Additional Colors -->
+    <color name="light_gray">#F0F0F0</color>
+    <color name="dark_gray">#424242</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="glassmorphism_background">#80FFFFFF</color>
+    <color name="theme_primary">#FF5722</color> <!-- Deep Orange -->
+    <color name="theme_secondary">#03A9F4</color> <!-- Sky Blue -->
+
+    <!-- Default Material Colors (Keeping Existing) -->
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+
+</resources>
