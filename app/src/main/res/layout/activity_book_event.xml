@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- Image Slider -->
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:iss_auto_cycle="true"
+        app:iss_period="3000"
+        app:iss_placeholder="@drawable/a3"
+        app:iss_delay="1000"
+        app:iss_text_align="CENTER"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/image_slider"
+        app:layout_constraintBottom_toTopOf="@id/divider_bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Event Name -->
+            <TextView
+                android:id="@+id/tv_event_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="National Music Festival"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Event Category -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_event_category"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Music"
+                android:textColor="@color/theme_secondary"
+                android:backgroundTint="@android:color/transparent"
+                app:strokeColor="@color/theme_secondary"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Date & Time Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    app:tint="@color/theme_secondary" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:text="Monday, December 24, 2022"
+                        android:textColor="@color/text_primary"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-medium"/>
+                    <TextView
+                        android:text="18:00 - 23:00 PM (GMT +07:00)"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif"/>
+
+                    <!-- Add to Calendar Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_add_to_calendar"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add to My Calendar"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/theme_primary"
+                        android:layout_marginBottom="16dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- Location Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/ic_location"
+                    android:layout_marginEnd="8dp"
+                    app:tint="@color/theme_secondary" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:text="Grand Park, New York City, US"
+                        android:textColor="@color/text_primary"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-medium"/>
+                    <TextView
+                        android:text="Grand City St. 100, New York, United States."
+                        android:textColor="@color/text_secondary"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif"/>
+
+                    <!-- See Location on Maps Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_see_location"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See Location on Maps"
+                        android:textColor="@color/theme_secondary"
+                        android:backgroundTint="@android:color/transparent"
+                        app:strokeColor="@color/theme_secondary"
+                        app:strokeWidth="1dp"
+                        android:layout_marginBottom="16dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Divider Before Sticky Button -->
+    <View
+        android:id="@+id/divider_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        app:layout_constraintBottom_toTopOf="@id/btn_book_tickets"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Sticky Book Tickets Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_book_tickets"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Tickets"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/theme_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

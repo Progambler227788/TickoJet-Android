@@ -1,8 +1,29 @@
 <resources>
     <string name="app_name">TickoJet</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Logo Description -->
+    <string name="logo_description">Logo</string>
+
+    <!-- Titles -->
+    <string name="create_account_title">Create Your Account</string>
+
+    <!-- Input Field Hints -->
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+
+    <!-- Buttons -->
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_in_button">Sign in</string>
+
+    <!-- New User? SignUp -->
+    <string name="new_user_text">New User?</string>
+    <string name="signup_text">SignUp</string>
+
+    <!-- Old User? Login-->
+    <string name="old_user_text">Already have an account?</string>
+    <string name="login_text">Login</string>
 
     <!-- Order ID -->
     <string name="order_id">Order ID: #%1$s</string>
@@ -22,10 +43,6 @@
     <string name="event_icon">Event Icon</string>
     <string name="status_icon">Status Icon</string>
 
-
-
-
-
     <!-- Booking Details -->
     <string name="booking_date">Saturday, 15 Feb, 2025 12:34 PM</string>
     <string name="booking_id">Booking ID: #12345678912323232343324234</string>
@@ -35,4 +52,8 @@
     <string name="event_date">Saturday, 15 Feb, 2025</string>
     <string name="amount_paid">Amount Paid</string>
     <string name="amount_price">Rs 718</string>
+
+    <!-- Login Screen Strings -->
+    <string name="login_title">Login to Your Account</string>
+    <string name="remember_me">Remember me</string>
 </resources>

@@ -1,0 +1,11 @@
+<!-- res/font/noto_sans_variable.xml -->
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        android:font="@font/notosans_variable"
+        android:fontStyle="normal"
+        android:fontWeight="400" />
+    <font
+        android:font="@font/notosans_italic_variable"
+        android:fontStyle="italic"
+        android:fontWeight="400" />
+</font-family>
