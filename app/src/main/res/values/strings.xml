@@ -21,4 +21,18 @@
     <!-- Content Descriptions -->
     <string name="event_icon">Event Icon</string>
     <string name="status_icon">Status Icon</string>
+
+
+
+
+
+    <!-- Booking Details -->
+    <string name="booking_date">Saturday, 15 Feb, 2025 12:34 PM</string>
+    <string name="booking_id">Booking ID: #12345678912323232343324234</string>
+    <string name="tickets_label">Tickets</string>
+    <string name="ticket_quantity">1x Single</string>
+    <string name="event_name">Event Name</string>
+    <string name="event_date">Saturday, 15 Feb, 2025</string>
+    <string name="amount_paid">Amount Paid</string>
+    <string name="amount_price">Rs 718</string>
 </resources>

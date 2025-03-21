@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="@color/surface_light">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Event Icon (Circular) -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivEventIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/a4"
+            android:contentDescription="@string/event_icon"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/divider_color"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Event Title -->
+        <TextView
+            android:id="@+id/tvEventTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Event Title"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivEventIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Event Date -->
+        <TextView
+            android:id="@+id/tvEventDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Event Date"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif"
+            app:layout_constraintTop_toBottomOf="@id/tvEventTitle"
+            app:layout_constraintStart_toStartOf="@id/tvEventTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Booking Description -->
+        <TextView
+            android:id="@+id/tvBookingDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Dear Talha,\nYour ticket code: #12345\nFor Event Name\nPasses: Ticket x2"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvEventDate"
+            app:layout_constraintStart_toStartOf="@id/tvEventTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

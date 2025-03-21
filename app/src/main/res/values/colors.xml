@@ -21,6 +21,10 @@
     <color name="error_red">#D32F2F</color>
     <color name="success_green">#4CAF50</color>
     <color name="warning_orange">#FFA000</color>
+    <color name="light_green">#E8F5E9</color>
+    <color name="status_pending">#FFA000</color>
+    <color name="light_orange">#FFF3E0</color>
+    <color name="light_red">#FFEBEE</color>
 
     <!-- Additional Colors -->
     <color name="light_gray">#F0F0F0</color>
@@ -29,6 +33,10 @@
     <color name="glassmorphism_background">#80FFFFFF</color>
     <color name="theme_primary">#FF5722</color> <!-- Deep Orange -->
     <color name="theme_secondary">#03A9F4</color> <!-- Sky Blue -->
+
+    <!-- Divider Color -->
+    <color name="divider_color">#E0E0E0</color>
+
 
     <!-- Default Material Colors (Keeping Existing) -->
     <color name="purple_200">#BB86FC</color>
