@@ -56,4 +56,10 @@
     <!-- Login Screen Strings -->
     <string name="login_title">Login to Your Account</string>
     <string name="remember_me">Remember me</string>
+
+   <!--    Booking Screen-->
+    <string name="title_choose_seats">Choose Seats</string>
+    <string name="available">Available</string>
+    <string name="reserved">Reserved</string>
+    <string name="selected">Selected</string>
 </resources>
