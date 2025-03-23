@@ -16,6 +16,7 @@
         android:background="?attr/colorPrimary"
         app:titleTextColor="@color/white"
         app:navigationIcon="@drawable/ic_back"
+        android:fontFamily="@font/noto_sans_regular"
         app:title="@string/title_choose_seats"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +92,7 @@
                 android:text="@string/available"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/noto_sans_regular"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
@@ -111,9 +112,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/reserved"
+                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
@@ -135,7 +136,7 @@
                 android:text="@string/selected"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/noto_sans_regular"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
     </LinearLayout>
@@ -162,7 +163,7 @@
             android:text="Total: Rs 0"
             android:textColor="@color/text_primary"
             android:textSize="28sp"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/noto_sans_regular"
             android:layout_marginEnd="16dp"/>
 
         <!-- Buy Button -->
@@ -173,9 +174,9 @@
             android:text="Buy Now"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:fontFamily="sans-serif-medium"
             app:cornerRadius="8dp"
             app:elevation="4dp"
+            android:fontFamily="@font/noto_sans_regular"
             app:rippleColor="?attr/colorSecondary"
             android:backgroundTint="?attr/colorPrimary"
             android:paddingVertical="12dp"

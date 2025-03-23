@@ -57,9 +57,13 @@
     <string name="login_title">Login to Your Account</string>
     <string name="remember_me">Remember me</string>
 
-   <!--    Booking Screen-->
+    <!--    Booking Screen-->
     <string name="title_choose_seats">Choose Seats</string>
     <string name="available">Available</string>
     <string name="reserved">Reserved</string>
     <string name="selected">Selected</string>
+    <string name="see_location_on_maps">See Location on Maps</string>
+    <string name="book_tickets">Book Tickets</string>
+    <string name="grand_park_new_york_city_us">Grand Park, New York City, US</string>
+    <string name="grand_city_st_100_new_york_united_states">Grand City St. 100, New York, United States.</string>
 </resources>

@@ -38,10 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="National Music Festival"
+                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginBottom="8dp"/>
 
             <!-- Event Category -->
@@ -88,14 +88,14 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textSize="16sp"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:fontFamily="@font/noto_sans_regular"/>
                     <TextView
                         android:text="18:00 - 23:00 PM (GMT +07:00)"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:fontFamily="sans-serif"/>
+                        android:fontFamily="@font/noto_sans_regular"/>
 
                     <!-- Add to Calendar Button -->
                     <com.google.android.material.button.MaterialButton
@@ -103,6 +103,7 @@
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_regular"
                         android:text="Add to My Calendar"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/theme_primary"
@@ -131,19 +132,19 @@
                     android:orientation="vertical"
                     android:layout_weight="1">
                     <TextView
-                        android:text="Grand Park, New York City, US"
+                        android:text="@string/grand_park_new_york_city_us"
                         android:textColor="@color/text_primary"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textSize="16sp"
-                        android:fontFamily="sans-serif-medium"/>
+                        android:fontFamily="@font/noto_sans_regular"/>
                     <TextView
-                        android:text="Grand City St. 100, New York, United States."
+                        android:text="@string/grand_city_st_100_new_york_united_states"
                         android:textColor="@color/text_secondary"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:textSize="14sp"
-                        android:fontFamily="sans-serif"/>
+                        android:fontFamily="@font/noto_sans_regular"/>
 
                     <!-- See Location on Maps Button -->
                     <com.google.android.material.button.MaterialButton
@@ -151,7 +152,8 @@
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="See Location on Maps"
+                        android:fontFamily="@font/noto_sans_regular"
+                        android:text="@string/see_location_on_maps"
                         android:textColor="@color/theme_secondary"
                         android:backgroundTint="@android:color/transparent"
                         app:strokeColor="@color/theme_secondary"
@@ -180,8 +182,9 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Book Tickets"
+        android:text="@string/book_tickets"
         android:textColor="@color/white"
+        android:fontFamily="@font/noto_sans_regular"
         android:backgroundTint="@color/theme_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
