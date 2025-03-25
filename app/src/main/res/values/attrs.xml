@@ -2,4 +2,12 @@
 <resources>
     <attr name="colorSuccess" format="color"/>
     <attr name="colorWarning" format="color"/>
+
+    <declare-styleable name="StatefulRecyclerView">
+        <attr name="emptyText" format="string"/>
+        <attr name="emptyIcon" format="reference"/>
+        <attr name="errorText" format="string"/>
+        <attr name="errorIcon" format="reference"/>
+        <attr name="loadingLayout" format="reference"/>
+    </declare-styleable>
 </resources>

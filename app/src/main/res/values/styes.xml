@@ -27,4 +27,20 @@
         <item name="strokeColor">@color/success_green</item>
         <item name="strokeWidth">1dp</item>
     </style>
+
+
+    <style name="Widget.TickoJet.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.TickoJet.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.TickoJet.BottomNavigationView" parent="">
+        <item name="colorSurface">?attr/colorPrimary</item>
+        <item name="colorOnSurface">@color/white</item>
+    </style>
+
+
+
+
+
+
 </resources>

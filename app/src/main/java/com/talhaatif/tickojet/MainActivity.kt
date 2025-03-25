@@ -1,52 +1,64 @@
 package com.talhaatif.tickojet
 
 import android.os.Bundle
-import android.view.animation.OvershootInterpolator
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import de.hdodenhof.circleimageview.CircleImageView
+import com.talhaatif.tickojet.databinding.ActivityMainBinding
+import com.talhaatif.tickojet.fragments.BookingsFragment
+import com.talhaatif.tickojet.fragments.DashBoardFragment
+import com.talhaatif.tickojet.fragments.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize View Binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        // Handle window insets
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        setupBottomNavigation()
+    }
 
-        // Animate Profile Image
-        val profileImage = findViewById<CircleImageView>(R.id.profile_image)
-        // Set initial scale
-        profileImage.scaleX = 1f
-        profileImage.scaleY = 1f
-
-        // Create the pop-out animation
-        profileImage.animate()
-            .scaleX(1.5f) // Expand to 120% size
-            .scaleY(1.5f)
-            .setDuration(600) // 600ms for expansion
-            .withEndAction {
-                // Shrink back to original size
-                profileImage.animate()
-                    .scaleX(1f)
-                    .scaleY(1f)
-                    .setDuration(600) // 600ms for shrinking
-                    .start()
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, DashBoardFragment())
+                        .commit()
+                    true
+                }
+                R.id.nav_booking -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, BookingsFragment())
+                        .commit()
+                    true
+                }
+                R.id.nav_profile -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, ProfileFragment())
+                        .commit()
+                    true
+                }
+                else -> false
             }
-            .start()
+        }
 
-        // Customize Profile Image Border
-        profileImage.borderColor = ContextCompat.getColor(this, R.color.white)
-        profileImage.borderWidth = 4
-
-
+        // Set default selection
+        binding.bottomNavigation.selectedItemId = R.id.nav_home
     }
 }

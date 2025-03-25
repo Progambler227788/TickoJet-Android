@@ -1,0 +1,13 @@
+<resources>
+    <!-- Carousel dimensions -->
+    <dimen name="item_margin">16dp</dimen>
+    <dimen name="carousel_item_width">280dp</dimen>
+    <dimen name="carousel_item_margin">8dp</dimen>
+    <dimen name="carousel_item_radius">12dp</dimen>
+
+    <!-- Animation dimensions -->
+    <dimen name="elevation_normal">4dp</dimen>
+    <dimen name="elevation_raised">12dp</dimen>
+    <dimen name="scale_normal">0.85f</dimen>
+    <dimen name="scale_center">1.0f</dimen>
+</resources>

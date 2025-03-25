@@ -66,4 +66,11 @@
     <string name="book_tickets">Book Tickets</string>
     <string name="grand_park_new_york_city_us">Grand Park, New York City, US</string>
     <string name="grand_city_st_100_new_york_united_states">Grand City St. 100, New York, United States.</string>
+
+
+
+    <!-- Event Card Sample Strings -->
+    <string name="event_title_sample">National Music Festival</string>
+    <string name="event_date_sample">Mon, Dec 24 • 18.00 - 23.00 PM</string>
+    <string name="event_location_sample">Grand Park, New York</string>
 </resources>

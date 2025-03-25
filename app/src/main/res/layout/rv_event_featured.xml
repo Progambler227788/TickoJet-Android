@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/event_image_card"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Event Image -->
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/a4"
+                android:background="@drawable/gradient_overlay"
+                android:clipToOutline="true" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Favorite Icon -->
+        <ImageView
+            android:id="@+id/event_favorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_heart_outline"
+            app:layout_constraintEnd_toEndOf="@id/event_image_card"
+            app:layout_constraintTop_toBottomOf="@id/event_image_card" />
+
+        <!-- Event Title -->
+        <TextView
+            android:id="@+id/event_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:text="National Music Festival"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/event_favorite"
+            app:layout_constraintStart_toStartOf="@id/event_image_card"
+            app:layout_constraintTop_toBottomOf="@id/event_image_card" />
+
+        <!-- Event Date & Time -->
+        <TextView
+            android:id="@+id/event_date_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:text="Mon, Dec 24 • 18.00 - 23.00 PM"
+            android:textColor="@color/deep_orange"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/event_title"
+            app:layout_constraintStart_toStartOf="@id/event_title"
+            app:layout_constraintTop_toBottomOf="@id/event_title" />
+
+        <!-- Event Location -->
+        <TextView
+            android:id="@+id/event_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@drawable/ic_location_orange"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:text="Grand Park, New York"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/event_date_time"
+            app:layout_constraintStart_toStartOf="@id/event_date_time"
+            app:layout_constraintTop_toBottomOf="@id/event_date_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

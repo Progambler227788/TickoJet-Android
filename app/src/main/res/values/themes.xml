@@ -24,6 +24,10 @@
         <item name="colorError">@color/error_red</item>
         <item name="colorSuccess">?attr/colorSuccess</item>
         <item name="colorWarning">?attr/colorWarning</item>
+
+
+        <!-- Bottom Navigation Style -->
+        <item name="bottomNavigationStyle">@style/Widget.TickoJet.BottomNavigationView</item>
         <!-- Default font -->
 <!--        <item name="fontFamily">@font/inter</item>-->
     </style>

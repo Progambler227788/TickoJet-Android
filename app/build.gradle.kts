@@ -58,8 +58,16 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
+    implementation ("androidx.fragment:fragment-ktx:1.6.1")
+
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
     // Lottie Animation for Beautiful Loading
     implementation ("com.airbnb.android:lottie:6.1.0")
+
+    // carousel
+
+    implementation ("com.github.sparrow007:CarouselRecyclerview:1.2.5")
 
 
 
