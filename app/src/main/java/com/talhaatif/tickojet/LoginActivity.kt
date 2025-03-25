@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.talhaatif.tickojet.databinding.ActivityLoginBinding
 import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.AuthRepository
@@ -15,6 +16,8 @@ import com.talhaatif.tickojet.utils.LoadingDialog
 import com.talhaatif.tickojet.utils.Result
 import com.talhaatif.tickojet.viewmodel.AuthViewModel
 import com.talhaatif.tickojet.viewmodel.factory.AuthViewModelFactory
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,8 +31,32 @@ class LoginActivity : AppCompatActivity() {
         AuthViewModelFactory(authRepository, tokenManager, applicationContext)
     }
 
+    // Helper function to navigate to MainActivity
+    private fun navigateToMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize TokenManager
+        tokenManager = TokenManager(this)
+
+        // Check token before setting UI
+        lifecycleScope.launch {
+            val token = tokenManager.getToken().firstOrNull() // Fetch only once
+            if (!token.isNullOrEmpty()) {
+                navigateToMainActivity()
+                return@launch // Stop execution early
+            }
+
+            setupUi()
+
+        }
+
+    }
+    private fun setupUi(){
 
         // Initialize View Binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -38,8 +65,7 @@ class LoginActivity : AppCompatActivity() {
         // Enable edge-to-edge display
         enableEdgeToEdge()
 
-        // Initialize TokenManager
-        tokenManager = TokenManager(this)
+
 
         // Handle window insets
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->

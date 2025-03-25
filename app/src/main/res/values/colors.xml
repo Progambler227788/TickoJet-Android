@@ -51,6 +51,7 @@
     <color name="available_seat">#4CAF50</color> <!-- Success Green -->
     <color name="reserved_seat">#D32F2F</color> <!-- Error Red -->
     <color name="selected_seat">#FFA000</color> <!-- Warning Orange -->
+    <color name="ripple_color">#40FFFFFF</color>
 
 
 

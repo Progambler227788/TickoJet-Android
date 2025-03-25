@@ -1,4 +1,4 @@
-package com.talhaatif.tickojet.requestModel
+package com.talhaatif.tickojet.responseModel
 
 import com.google.gson.annotations.SerializedName
 

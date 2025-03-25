@@ -11,8 +11,6 @@ object ApiClient {
     private const val BASE_URL = "https://tickojet-8f5e27f79912.herokuapp.com/"
 
 
-    private lateinit var dataStore: DataStore<Preferences>
-
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->

@@ -1,6 +1,4 @@
-package com.talhaatif.tickojet.requestModel
-
-import java.util.Date
+package com.talhaatif.tickojet.responseModel
 
 // SimplifiedTrendingEvent.kt
 data class SimplifiedTrendingEvent(

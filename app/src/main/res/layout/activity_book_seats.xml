@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="@color/background_light"
-    tools:context=".BookSeatsActivity">
+    tools:context=".SeatSelectionActivity">
 
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         app:titleTextColor="@color/white"
+        android:layout_marginTop="4dp"
         app:navigationIcon="@drawable/ic_back"
         android:fontFamily="@font/noto_sans_regular"
         app:title="@string/title_choose_seats"
@@ -56,6 +58,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="12dp"
                 app:spanCount="6"
                 tools:listitem="@layout/seat_item"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>

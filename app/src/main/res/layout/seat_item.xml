@@ -7,13 +7,15 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/seatButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:fontFamily="@font/noto_sans_regular"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:text="A1"
+        android:stateListAnimator="@null"
         app:cornerRadius="12dp"
+        app:strokeColor="@android:color/transparent"
         app:elevation="4dp"
         app:rippleColor="?attr/colorSecondary"
         app:icon="@drawable/ic_seat_selected"

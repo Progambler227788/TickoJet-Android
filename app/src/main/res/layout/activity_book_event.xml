@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/main"
     android:layout_height="match_parent"
     android:background="@color/background_light">
 
@@ -132,6 +132,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1">
                     <TextView
+                        android:id="@+id/tvLocation"
                         android:text="@string/grand_park_new_york_city_us"
                         android:textColor="@color/text_primary"
                         android:layout_height="wrap_content"
@@ -139,6 +140,7 @@
                         android:textSize="16sp"
                         android:fontFamily="@font/noto_sans_regular"/>
                     <TextView
+                        android:id="@+id/tvFullLocation"
                         android:text="@string/grand_city_st_100_new_york_united_states"
                         android:textColor="@color/text_secondary"
                         android:layout_height="wrap_content"

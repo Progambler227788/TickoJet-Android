@@ -1,16 +1,15 @@
 package com.talhaatif.tickojet.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.talhaatif.tickojet.BookEventActivity
 import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.databinding.RvEventFeaturedBinding
-import com.talhaatif.tickojet.requestModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
 import com.talhaatif.tickojet.utils.DateUtils
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 // TrendingEventsAdapter.kt
 class TrendingEventsAdapter(
@@ -24,6 +23,14 @@ class TrendingEventsAdapter(
         fun bind(event: SimplifiedTrendingEvent) {
             binding.eventTitle.text = event.title
             binding.eventLocation.text = event.location
+
+            binding.root.setOnClickListener {
+                val context = it.context
+                val intent = Intent(context, BookEventActivity::class.java)
+
+                intent.putExtra("EVENT_ID", event.id)
+                context.startActivity(intent)
+            }
 
             // Format date
 
