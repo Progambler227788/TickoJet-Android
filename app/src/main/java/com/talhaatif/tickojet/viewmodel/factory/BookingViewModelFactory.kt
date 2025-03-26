@@ -5,19 +5,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.AuthRepository
+import com.talhaatif.tickojet.repository.BookingRepository
 import com.talhaatif.tickojet.viewmodel.AuthViewModel
+import com.talhaatif.tickojet.viewmodel.BookingViewModel
 
 // to create view model objects that takes parameter so we use factory
-class AuthViewModelFactory(
-    private val authRepository: AuthRepository,
+class BookingViewModelFactory(
+    private val bookingRepository: BookingRepository,
     private val tokenManager: TokenManager,
     private val context: Context
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AuthViewModel::class.java)) {
-            return AuthViewModel(authRepository, tokenManager, context) as T
+        if (modelClass.isAssignableFrom(BookingViewModel::class.java)) {
+            return BookingViewModel(bookingRepository, tokenManager, context) as T
         }
+
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

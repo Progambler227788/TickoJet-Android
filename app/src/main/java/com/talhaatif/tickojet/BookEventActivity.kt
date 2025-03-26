@@ -58,6 +58,8 @@ class BookEventActivity : AppCompatActivity() {
         Log.d("BookEventActivity", "Fetching details for event: $eventId")
 
         eventViewModel.getEventById(eventId)
+
+
         eventViewModel.eventDetails.observe(this, Observer { result ->
             result?.let {
                 when (it) {
@@ -111,3 +113,14 @@ class BookEventActivity : AppCompatActivity() {
         binding.imageSlider.setImageList(imageList)
     }
 }
+// Notes for remembering
+
+/*
+*        /*
+        * How Observer Works?
+Observes eventViewModel.eventDetails (LiveData<Result<T>>).
+
+Whenever _trendingEvents in ViewModel changes, this observer gets triggered.
+
+Based on the Result type, UI updates accordingly.
+* */ */

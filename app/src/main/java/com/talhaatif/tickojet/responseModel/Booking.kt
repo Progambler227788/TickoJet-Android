@@ -9,9 +9,10 @@ data class Booking(
     val id: String,
     val userId: String,
     val eventId: String,
+    val eventName: String,
+    val eventDate: String,
     val seats: List<Seat>,
     val status: BookingStatus,
-    @SerializedName("createdAt")
-    @JsonAdapter(EpochMillisDateAdapter::class)
-    val createdAt: Date
+    val createdAt: String,
+    val payment: Payment
 )

@@ -13,7 +13,7 @@ import com.talhaatif.tickojet.utils.DateUtils
 
 // TrendingEventsAdapter.kt
 class TrendingEventsAdapter(
-    private val events: List<SimplifiedTrendingEvent>,
+    private var events: List<SimplifiedTrendingEvent>,
     private val onFavoriteClick: (SimplifiedTrendingEvent) -> Unit
 ) : RecyclerView.Adapter<TrendingEventsAdapter.EventViewHolder>() {
 
@@ -56,6 +56,7 @@ class TrendingEventsAdapter(
     }
 
     fun submitList(newList: List<SimplifiedTrendingEvent>) {
+        events = newList
         // Implement proper diffing if needed
         notifyDataSetChanged()
     }

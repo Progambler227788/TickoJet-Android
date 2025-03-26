@@ -56,6 +56,8 @@ class DashBoardFragment : Fragment() {
 
         animateProfileImage()
         customizeProfileImage()
+
+        observeTrendingEvents()
     }
 
     private fun setupRecyclerView() {
@@ -77,7 +79,7 @@ class DashBoardFragment : Fragment() {
             enableCarouselEffect(scale = 0.85f)
 
             // Set up animations
-            setupRecyclerViewAnimations()
+//            setupRecyclerViewAnimations()
 
             // Set retry action
             retryAction = { loadTrendingEvents() }

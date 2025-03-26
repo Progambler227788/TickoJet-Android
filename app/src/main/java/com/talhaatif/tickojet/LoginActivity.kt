@@ -39,11 +39,15 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        tokenManager = TokenManager(this)
+
+
         setupUi()
 
 
-//        // Initialize TokenManager
-//        tokenManager = TokenManager(this)
+        // Initialize TokenManager
+
 //
 //        // Check token before setting UI
 //        lifecycleScope.launch {
