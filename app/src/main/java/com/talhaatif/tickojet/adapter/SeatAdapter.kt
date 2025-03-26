@@ -1,5 +1,6 @@
 package com.talhaatif.tickojet.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.util.Log
@@ -15,12 +16,26 @@ import com.google.android.material.button.MaterialButton
 
 class SeatAdapter(
     private val context : Context,
-    private val seats: List<Seat>,
+    private var seats: List<Seat>,
     private val onSeatSelected: (Seat, Boolean) -> Unit
 ) : RecyclerView.Adapter<SeatAdapter.SeatViewHolder>() {
 
     private val selectedSeats = mutableListOf<Seat>()
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateSeatStatus(seatNumbers: List<String>, status: String) {
+        Log.d("SeatAdapter", "Updating seat status: $seatNumbers, $status")
+
+        val isAvailable = status != "BOOKED"
+
+        seats = seats.map { seat ->
+            if (seat.seatNumber in seatNumbers) {
+                seat.copy(available = isAvailable)
+            } else seat
+        }
+
+        notifyDataSetChanged() // More efficient than multiple notifyItemChanged calls
+    }
 
     inner class SeatViewHolder(private val binding: SeatItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -39,21 +39,23 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupUi()
 
-        // Initialize TokenManager
-        tokenManager = TokenManager(this)
 
-        // Check token before setting UI
-        lifecycleScope.launch {
-            val token = tokenManager.getToken().firstOrNull() // Fetch only once
-            if (!token.isNullOrEmpty()) {
-                navigateToMainActivity()
-                return@launch // Stop execution early
-            }
-
-            setupUi()
-
-        }
+//        // Initialize TokenManager
+//        tokenManager = TokenManager(this)
+//
+//        // Check token before setting UI
+//        lifecycleScope.launch {
+//            val token = tokenManager.getToken().firstOrNull() // Fetch only once
+//            if (!token.isNullOrEmpty()) {
+//                navigateToMainActivity()
+//                return@launch // Stop execution early
+//            }
+//
+//
+//
+//        }
 
     }
     private fun setupUi(){

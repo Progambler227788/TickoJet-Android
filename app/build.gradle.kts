@@ -69,6 +69,14 @@ dependencies {
 
     implementation ("com.github.sparrow007:CarouselRecyclerview:1.2.5")
 
+    implementation ("androidx.core:core-splashscreen:1.0.1")
+
+    implementation ("org.java-websocket:Java-WebSocket:1.5.2")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+
+
+
+
 
 
 

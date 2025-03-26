@@ -1,10 +1,14 @@
 package com.talhaatif.tickojet.repository
 
+import android.util.Log
 import com.talhaatif.tickojet.data.remote.client.ApiClient
 import com.talhaatif.tickojet.local.TokenManager
+import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
 import com.talhaatif.tickojet.utils.Result
+import java.io.IOException
+import java.net.URLEncoder
 
 // EventRepository.kt
 class EventRepository(private val tokenManager: TokenManager) {
@@ -25,6 +29,7 @@ class EventRepository(private val tokenManager: TokenManager) {
             Result.Error(e.message ?: "An unknown error occurred")
         }
     }
+
 
     suspend fun getEventById(eventId: String): Result<Event> {
         return try {
@@ -51,6 +56,54 @@ class EventRepository(private val tokenManager: TokenManager) {
             }
         } catch (e: Exception) {
             Result.Error("Network error: ${e.message ?: "Unknown network error"}")
+        }
+    }
+
+    suspend fun bookWithWallet(
+        eventId: String,
+        seatNumbers: List<String>
+    ): Result<BookingResponse> {
+        return try {
+            // 1. Get authentication token
+            val token = tokenManager.getTokenForRequest()
+            if (token == null) {
+                return Result.Error("Not authenticated")
+            }
+            // 2. Convert seatNumbers to a comma-separated string
+            val seatNumbersString = seatNumbers.joinToString(",") { URLEncoder.encode(it, "UTF-8") }
+
+            // 3. Make API call
+            val response = ApiClient.instance.bookWithWallet(
+                token = "Bearer $token",
+                eventId = eventId,
+                seatNumbers = seatNumbersString
+            )
+
+            // 4. Handle response
+            when {
+                response.isSuccessful -> {
+                    response.body()?.let { bookingResponse ->
+                        Result.Success(bookingResponse)
+                    } ?: Result.Error("Empty response body")
+                }
+
+                response.code() == 401 -> {
+                    Result.Error("Session expired, please login again")
+                }
+
+                response.code() == 400 -> {
+                    val errorBody = response.errorBody()?.string()
+                    Result.Error(errorBody ?: "Bad request")
+                }
+
+                else -> {
+                    Result.Error("Booking failed: ${response.message()}")
+                }
+            }
+        } catch (e: IOException) {
+            Result.Error("Network error: ${e.message}")
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "An unknown error occurred")
         }
     }
 
