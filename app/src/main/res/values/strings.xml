@@ -72,4 +72,13 @@
     <string name="event_title_sample">National Music Festival</string>
     <string name="event_date_sample">Mon, Dec 24 • 18.00 - 23.00 PM</string>
     <string name="event_location_sample">Grand Park, New York</string>
+
+
+   <!--    Profile Screen-->
+    <string name="profile_picture">Profile Picture</string>
+    <string name="edit_account">Edit Account</string>
+    <string name="change_currency">Change Currency</string>
+    <string name="change_city">Change City</string>
+    <string name="change_gender">Change Gender</string>
+    <string name="logout">Logout</string>
 </resources>
