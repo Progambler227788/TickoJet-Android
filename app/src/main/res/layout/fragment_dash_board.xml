@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/main"
+
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@color/background_light">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <!-- Top Bar: Gradient Background + Location Picker + Username -->
     <LinearLayout
@@ -39,7 +43,7 @@
             android:id="@+id/profile_image"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/apple"
+            android:src="@drawable/avatar2"
             android:paddingHorizontal="8dp"
             android:gravity="end"
             app:civ_border_width="2dp"
@@ -132,6 +136,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:nestedScrollingEnabled="false"
         tools:listitem="@layout/rv_event_featured"
         app:emptyText="No trending events found"
         app:emptyIcon="@drawable/empty"
@@ -141,12 +146,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Recommended Events Section -->
+    <!-- Upcoming Events Section -->
     <TextView
-        android:id="@+id/tv_recommended_events"
+        android:id="@+id/tv_upcoming_events"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recommended Events"
+        android:text="Upcoming Events"
         android:textSize="18sp"
         android:textColor="@color/text_primary"
         android:layout_marginStart="16dp"
@@ -163,21 +168,27 @@
         android:textSize="14sp"
         android:textColor="@color/deep_orange"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toTopOf="@id/tv_recommended_events"
+        app:layout_constraintTop_toTopOf="@id/tv_upcoming_events"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Vertical RecyclerView for Recommended Events -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_recommended_events"
+    <com.talhaatif.tickojet.custom.StatefulRecyclerView
+        android:id="@+id/upcomingEventsView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
+        android:nestedScrollingEnabled="false"
         tools:listitem="@layout/rv_event"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/tv_recommended_events"
+        app:emptyText="No trending events found"
+        app:emptyIcon="@drawable/empty"
+        app:errorText="Failed to load events"
+        app:errorIcon="@drawable/error"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tv_upcoming_events"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

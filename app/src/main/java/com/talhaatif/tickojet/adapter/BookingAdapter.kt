@@ -14,7 +14,6 @@ import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.databinding.RvBookingBinding
 import com.talhaatif.tickojet.responseModel.BookingStatus
 import com.talhaatif.tickojet.utils.DateUtils
-import java.util.Random
 
 
 class BookingAdapter(
@@ -66,12 +65,15 @@ class BookingAdapter(
                 }
 
 
+                val drawables = listOf(R.drawable.a1, R.drawable.a1, R.drawable.a1)
 
-                val drawables = listOf(R.drawable.a4, R.drawable.a5, R.drawable.a6)
-                Glide.with(root.context)
+                Glide.with(itemView.context)
                     .load(drawables.random())
-                    .placeholder(R.drawable.a1)
+                    .centerCrop() // Ensure proper scaling
+                    .placeholder(R.drawable.a1) // Use a small placeholder
+                    .error(R.drawable.a1) // Use a small error image
                     .into(ivEventIcon)
+
 
                 // Set click listener
                 root.setOnClickListener { onItemClick(booking) }

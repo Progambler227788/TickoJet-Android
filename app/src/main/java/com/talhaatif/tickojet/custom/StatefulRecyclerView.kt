@@ -1,16 +1,21 @@
 package com.talhaatif.tickojet.custom
 
 import android.content.Context
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.databinding.LayoutStatefulRecyclerviewBinding
+import kotlin.math.abs
 
 class StatefulRecyclerView @JvmOverloads constructor(
     context: Context,
@@ -123,6 +128,78 @@ class StatefulRecyclerView @JvmOverloads constructor(
             }
         })
     }
+    // Optimized carousel effect
+    fun enableSmoothCarouselEffect(scale: Float = 0.85f, elevation: Float = 8f) {
+        recyclerView.apply {
+            // 1. Enable hardware acceleration for smoother animations
+            setLayerType(View.LAYER_TYPE_HARDWARE, null)
+
+            // 2. Add snap helper for better scrolling behavior
+            LinearSnapHelper().attachToRecyclerView(this) // For center snapping
+
+            // 3. Add item decoration for visual spacing
+            addItemDecoration(LinearHorizontalSpacingDecoration(
+                spacing = resources.getDimensionPixelSize(R.dimen.carousel_spacing),
+                edgeSpacing = resources.getDimensionPixelSize(R.dimen.carousel_edge_spacing)
+            ))
+
+            // 4. Optimized scroll listener with property animations
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                private val animator = RecyclerViewItemAnimator(scale, elevation)
+
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    val centerX = recyclerView.width / 2
+                    for (i in 0 until recyclerView.childCount) {
+                        val child = recyclerView.getChildAt(i)
+                        val childCenterX = (child.left + child.right) / 2
+                        val distance = abs(centerX - childCenterX)
+
+                        // Calculate scale and elevation based on distance from center
+                        val scaleFactor = 1f - (1f - scale) * (distance.toFloat() / centerX)
+                        val elevationFactor = elevation * (1 - distance.toFloat() / centerX)
+
+                        animator.animateItem(child, scaleFactor, elevationFactor)
+                    }
+                }
+            })
+        }
+    }
+
+    // Setup optimized animations
+    fun setupSmoothAnimations() {
+        recyclerView.apply {
+            // 1. Use custom item animator
+            itemAnimator = OptimizedItemAnimator().apply {
+                addDuration = 180L
+                changeDuration = 180L
+                moveDuration = 180L
+                removeDuration = 180L
+            }
+
+            // 2. Enable predictive animations
+            layoutManager?.isItemPrefetchEnabled = true
+            setItemViewCacheSize(20) // Cache more views offscreen
+            setHasFixedSize(true) // If all items have same size
+        }
+    }
+
+    // Custom animator class
+    private inner class RecyclerViewItemAnimator(
+        private val minScale: Float,
+        private val maxElevation: Float
+    ) {
+        fun animateItem(view: View, scale: Float, elevation: Float) {
+            // Use ViewPropertyAnimator for smooth transitions
+            view.animate()
+                .scaleX(scale)
+                .scaleY(scale)
+                .translationZ(elevation)
+                .setDuration(150L)
+                .setInterpolator(FastOutSlowInInterpolator())
+                .start()
+        }
+    }
+
 
     fun showLoading() {
         binding.recyclerView.visibility = View.GONE
@@ -158,5 +235,43 @@ class StatefulRecyclerView @JvmOverloads constructor(
 
     fun setAdapter(adapter: RecyclerView.Adapter<*>) {
         binding.recyclerView.adapter = adapter
+    }
+}
+
+class LinearHorizontalSpacingDecoration(
+    private val spacing: Int,
+    private val edgeSpacing: Int
+) : RecyclerView.ItemDecoration() {
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        val position = parent.getChildAdapterPosition(view)
+
+        outRect.left = if (position == 0) edgeSpacing else spacing / 2
+        outRect.right = if (position == state.itemCount - 1) edgeSpacing else spacing / 2
+    }
+}
+
+
+class OptimizedItemAnimator : DefaultItemAnimator() {
+    init {
+        // Enable change animations only when necessary
+        supportsChangeAnimations = false
+    }
+
+    override fun animateChange(
+        oldHolder: RecyclerView.ViewHolder,
+        newHolder: RecyclerView.ViewHolder,
+        fromX: Int, fromY: Int,
+        toX: Int, toY: Int
+    ): Boolean {
+        // Disable change animations for better performance
+        dispatchChangeFinished(oldHolder, true)
+        dispatchChangeFinished(newHolder, false)
+        return false
     }
 }

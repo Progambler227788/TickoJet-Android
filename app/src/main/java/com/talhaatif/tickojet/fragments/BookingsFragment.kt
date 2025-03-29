@@ -12,12 +12,9 @@ import com.talhaatif.tickojet.databinding.FragmentBookingsBinding
 import com.talhaatif.tickojet.databinding.FragmentDashBoardBinding
 import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.BookingRepository
-import com.talhaatif.tickojet.repository.EventRepository
 import com.talhaatif.tickojet.utils.Result
 import com.talhaatif.tickojet.viewmodel.BookingViewModel
-import com.talhaatif.tickojet.viewmodel.EventViewModel
 import com.talhaatif.tickojet.viewmodel.factory.BookingViewModelFactory
-import com.talhaatif.tickojet.viewmodel.factory.EventViewModelFactory
 
 
 class BookingsFragment : Fragment() {

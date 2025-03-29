@@ -4,6 +4,7 @@ import com.talhaatif.tickojet.responseModel.Booking
 import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.UpcomingEvents
 import retrofit2.Response
 
 import retrofit2.http.GET
@@ -18,6 +19,11 @@ interface EventService {
     suspend fun getTrendingEvents(
         @Header("Authorization") token: String
     ): Response<List<SimplifiedTrendingEvent>>
+
+    @GET("/api/user/profile/events/upcomingEvents")
+    suspend fun getUpcomingEvents(
+        @Header("Authorization") token: String
+    ): Response<List<UpcomingEvents>>
 
     @GET("/api/user/profile/events/{eventId}") // endpoint
     suspend fun getEventByID(

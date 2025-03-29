@@ -6,6 +6,7 @@ import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.UpcomingEvents
 import com.talhaatif.tickojet.utils.Result
 import java.io.IOException
 import java.net.URLEncoder
@@ -29,6 +30,25 @@ class EventRepository(private val tokenManager: TokenManager) {
             Result.Error(e.message ?: "An unknown error occurred")
         }
     }
+
+    suspend fun getUpcomingEvents(): Result<List<UpcomingEvents>> {
+        return try {
+            val token = tokenManager.getTokenForRequest()
+            if (token == null) {
+                return Result.Error("Not authenticated")
+            }
+
+            val response = ApiClient.instance.getUpcomingEvents("Bearer $token")
+            if (response.isSuccessful) {
+                Result.Success(response.body() ?: emptyList())
+            } else {
+                Result.Error(response.message())
+            }
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "An unknown error occurred")
+        }
+    }
+
 
 
     suspend fun getEventById(eventId: String): Result<Event> {

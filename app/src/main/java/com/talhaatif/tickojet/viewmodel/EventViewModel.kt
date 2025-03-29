@@ -10,8 +10,10 @@ import com.talhaatif.tickojet.repository.EventRepository
 import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.UpcomingEvents
 import com.talhaatif.tickojet.utils.NetworkUtils
 import com.talhaatif.tickojet.utils.Result
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 // EventViewModel.kt
@@ -25,6 +27,10 @@ class EventViewModel(
     val trendingEvents: LiveData<Result<List<SimplifiedTrendingEvent>>> get() = _trendingEvents
 
 
+    private val _upcomingEvents = MutableLiveData<Result<List<UpcomingEvents>>>()
+    val upcomingEvents: LiveData<Result<List<UpcomingEvents>>> get() = _upcomingEvents
+
+
     private val _eventDetails = MutableLiveData<Result<Event>>()
     val eventDetails: LiveData<Result<Event>> get() = _eventDetails
 
@@ -34,15 +40,33 @@ class EventViewModel(
     val bookingState: LiveData<Result<BookingResponse>> get() = _bookingState
 
 
+
+// Trending events based on booked seats
     fun getTrendingEvents() {
         if (!NetworkUtils.isNetworkAvailable(context)) {
             _trendingEvents.value = Result.Error("No internet connection")
             return
         }
 
-        _trendingEvents.value = Result.Loading
-        viewModelScope.launch {
-            _trendingEvents.value = eventRepository.getTrendingEvents()
+    if (_trendingEvents.value is Result.Loading) return
+
+    viewModelScope.launch(Dispatchers.IO) { // Load on background thread
+        _trendingEvents.postValue(Result.Loading)
+        _trendingEvents.postValue(eventRepository.getTrendingEvents())
+    }
+    }
+
+    fun getUpcomingEvents() {
+        if (!NetworkUtils.isNetworkAvailable(context)) {
+            _upcomingEvents.value = Result.Error("No internet connection")
+            return
+        }
+
+
+        if (_upcomingEvents.value is Result.Loading) return
+        viewModelScope.launch(Dispatchers.IO)  {
+            _upcomingEvents.postValue(Result.Loading)
+            _upcomingEvents.postValue(eventRepository.getUpcomingEvents())
         }
     }
 

@@ -2,98 +2,127 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white"> <!-- Temporary concrete color -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:padding="16dp">
 
-        <!-- Image inside CardView for Rounded Corners -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/eventImageCard"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:cardCornerRadius="12dp"
-            android:clipToOutline="true"
-            app:cardElevation="0dp"
+        <!-- Category Chip with fallback colors -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SPORTS"
+            android:textColor="@color/white"
+            android:fontFamily="@font/noto_sans_regular"
+            android:textSize="12sp"
+            app:chipBackgroundColor="@color/deep_orange"
+            app:chipCornerRadius="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- Event Image Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardEventImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/light_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipCategory"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
-                android:id="@+id/eventImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/ivEvent"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/a1" />
+                android:src="@drawable/event1"
+                android:contentDescription="@string/cd_event_image"
+                />
         </androidx.cardview.widget.CardView>
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/eventTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Elevate: The Conference for Professional Growth"
-            android:textColor="#000"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:maxLines="2"
-            android:ellipsize="end"
-            app:layout_constraintStart_toEndOf="@id/eventImageCard"
-            app:layout_constraintTop_toTopOf="@id/eventImageCard"
-            app:layout_constraintEnd_toStartOf="@id/eventPrice"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp" />
-
-        <!-- Location -->
+        <!-- Event Details Column -->
         <LinearLayout
+            android:id="@+id/detailsColumn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/eventLocationContainer"
-            app:layout_constraintStart_toStartOf="@id/eventTitle"
-            app:layout_constraintTop_toBottomOf="@id/eventTitle"
-            app:layout_constraintEnd_toEndOf="@id/eventTitle"
-            android:layout_marginTop="4dp">
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/cardEventImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardEventImage"
+            app:layout_constraintTop_toTopOf="@id/cardEventImage">
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/ic_location"
-                android:layout_marginEnd="4dp"
-                app:tint="#666" />
-
+            <!-- Event Title -->
             <TextView
-                android:id="@+id/eventLocation"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="36 Guild Street, USA"
-                android:textColor="#666"
-                android:textSize="12sp"/>
+                android:text="Pak vs India Match"
+                android:textColor="@color/dark_gray"
+                android:fontFamily="@font/noto_sans_regular"
+                android:textSize="16sp"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <!-- Location Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/ic_location"
+                    app:tint="@color/deep_orange"/>
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lahore"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/noto_sans_regular"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- Date Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/deep_orange"/>
+
+                <TextView
+                    android:id="@+id/tvDateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dec 31, 2023 • 7:00 PM"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/noto_sans_regular"
+                    android:textSize="12sp"/>
+            </LinearLayout>
         </LinearLayout>
-
-
-
-        <!-- Price -->
-        <TextView
-            android:id="@+id/eventPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_pink_bg"
-            android:gravity="center"
-            android:padding="6dp"
-            android:text="$27.00"
-            android:textColor="#D63384"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

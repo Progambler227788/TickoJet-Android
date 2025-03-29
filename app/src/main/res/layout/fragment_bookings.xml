@@ -40,7 +40,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Search events..."
+                android:hint="Search bookings..."
                 android:backgroundTint="@color/glassmorphism_background"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
@@ -61,20 +61,21 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Horizontal RecyclerView for Upcoming Events -->
+    <!-- Horizontal RecyclerView for Bookings -->
     <com.talhaatif.tickojet.custom.StatefulRecyclerView
         android:id="@+id/userBookingsRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        tools:listitem="@layout/rv_booking"
+        app:emptyIcon="@drawable/a1"
         app:emptyText="No trending events found"
-        app:emptyIcon="@drawable/empty"
-        app:errorText="Failed to load events"
         app:errorIcon="@drawable/error"
-        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        app:errorText="Failed to load events"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        tools:listitem="@layout/rv_booking" />
 
 
 

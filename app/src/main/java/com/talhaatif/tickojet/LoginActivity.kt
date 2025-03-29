@@ -46,20 +46,7 @@ class LoginActivity : AppCompatActivity() {
         setupUi()
 
 
-        // Initialize TokenManager
 
-//
-//        // Check token before setting UI
-//        lifecycleScope.launch {
-//            val token = tokenManager.getToken().firstOrNull() // Fetch only once
-//            if (!token.isNullOrEmpty()) {
-//                navigateToMainActivity()
-//                return@launch // Stop execution early
-//            }
-//
-//
-//
-//        }
 
     }
     private fun setupUi(){

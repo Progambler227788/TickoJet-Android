@@ -1,7 +1,6 @@
 package com.talhaatif.tickojet.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.adapter.TrendingEventsAdapter
+import com.talhaatif.tickojet.adapter.UpcomingEventsAdapter
 import com.talhaatif.tickojet.databinding.FragmentDashBoardBinding
 import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.EventRepository
@@ -44,97 +44,123 @@ class DashBoardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        eventViewModel.getTrendingEvents()
+        // Initialize adapters first
+        binding.trendingEventsView.recyclerView.adapter = TrendingEventsAdapter { event ->
+            // Handle trending event click
+        }
 
-//        setupRecyclerView()
+        binding.upcomingEventsView.recyclerView.adapter = UpcomingEventsAdapter()
+
+        // Setup layouts
         setupTrendingEvents()
+        setupUpcomingEvents()
 
-
-//        loadTrendingEvents()
-
-
-
+        // Animate profile image
         animateProfileImage()
         customizeProfileImage()
 
-        observeTrendingEvents()
+        // Load data
+        eventViewModel.getTrendingEvents()
+        eventViewModel.getUpcomingEvents()
     }
 
-    private fun setupRecyclerView() {
-        binding.trendingEventsView.recyclerView.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+    override fun onStart() {
+        super.onStart()
+        setupObservers()
     }
     private fun setupTrendingEvents() {
         binding.trendingEventsView.apply {
-            setLayoutManager(LinearLayoutManager(
+            // 1. Setup layout manager with pre-caching
+            val layoutManager = LinearLayoutManager(
                 requireContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false
-            ))
+            ).apply {
+                initialPrefetchItemCount = 5 // Pre-load items for smooth scrolling
+            }
+            setLayoutManager(layoutManager)
 
-            // Enable modern carousel effect
-            enableCarouselEffect(scale = 0.85f)
+            // 2. Enable optimized carousel
+            enableSmoothCarouselEffect(
+                scale = 0.85f,
+                elevation = 12f
+            )
 
-            // Set up animations
-//            setupRecyclerViewAnimations()
+            // 3. Setup smooth animations
+            setupSmoothAnimations()
 
-            // Set retry action
+            // 4. Set retry action
             retryAction = { loadTrendingEvents() }
-        }
 
-        loadTrendingEvents()
+            // 5. Enable hardware acceleration
+            recyclerView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        }
     }
 
 
-    private fun loadTrendingEvents() {
-        binding.trendingEventsView.showLoading()
+    private fun setupObservers() {
         eventViewModel.trendingEvents.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Loading -> binding.trendingEventsView.showLoading()
                 is Result.Success -> {
-                    if (result.data.isEmpty()) {
-                        binding.trendingEventsView.showEmpty()
-                    } else {
-                        // Initialize adapter first if null
-                        if (binding.trendingEventsView.recyclerView.adapter == null) {
-                            binding.trendingEventsView.recyclerView.adapter = TrendingEventsAdapter(
-                                result.data,
-                                { event -> /* Handle favorite click */ }
-                            )
-                        } else {
-                            // Update existing adapter data
-                            (binding.trendingEventsView.recyclerView.adapter as TrendingEventsAdapter)
-                                .submitList(result.data)
-                        }
-                        binding.trendingEventsView.showContent()
-                    }
-                }
-                is Result.Error -> binding.trendingEventsView.showError()
-            }
-        }
-    }
-
-    private fun observeTrendingEvents() {
-        eventViewModel.trendingEvents.observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is Result.Loading -> {
-                    // Show loading indicator if needed
-                }
-                is Result.Success -> {
-                    val adapter = TrendingEventsAdapter(result.data) { event ->
-                        // Handle favorite click
-                    }
-//                    binding.rvUpcomingEvents.adapter = adapter
+                    (binding.trendingEventsView.recyclerView.adapter as TrendingEventsAdapter)
+                        .submitList(result.data)
+                    binding.trendingEventsView.showContent()
                 }
                 is Result.Error -> {
-                    Log.d("Error in DashBoardFragment", "Error: ${result.message}")
+                    binding.trendingEventsView.showError()
                     Toast.makeText(requireContext(), result.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
+        eventViewModel.upcomingEvents.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Loading -> binding.upcomingEventsView.showLoading()
+                is Result.Success -> {
+                    (binding.upcomingEventsView.recyclerView.adapter as UpcomingEventsAdapter)
+                        .submitList(result.data)
+                    binding.upcomingEventsView.showContent()
+                }
+                is Result.Error -> {
+                    binding.upcomingEventsView.showError()
+                    Toast.makeText(requireContext(), result.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun setupUpcomingEvents() {
+        binding.upcomingEventsView.apply {
+            val layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+            ).apply {
+                initialPrefetchItemCount = 3 // Pre-load items for smooth scrolling
+            }
+            setLayoutManager(layoutManager)
+
+            //  Setup smooth animations
+            setupSmoothAnimations()
+
+
+            // Set retry action
+            retryAction = { loadUpcomingEvents() }
+        }
+
+
+
+    }
+
+
+    private fun loadUpcomingEvents () {
+        eventViewModel.getUpcomingEvents()
+    }
+
+
+    private fun loadTrendingEvents() {
+        eventViewModel.getTrendingEvents()
     }
 
     private fun animateProfileImage() {

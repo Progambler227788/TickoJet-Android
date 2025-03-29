@@ -61,5 +61,22 @@
 
 
 
+    <!-- Category Chip Colors -->
+    <color name="category_chip_background">#E8F5E9</color>
+    <color name="category_chip_text">#2E7D32</color>
+
+    <!-- Sports Category Specific -->
+    <color name="sports_chip_background">#FFF3E0</color>
+    <color name="sports_chip_text">#E65100</color>
+
+
+    <!-- Add these to your existing colors -->
+    <color name="gray_light">#EEEEEE</color>
+    <color name="shimmer_base">#E0E0E0</color>
+    <color name="shimmer_highlight">#F5F5F5</color>
+
+
+
+
 
 </resources>

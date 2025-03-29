@@ -5,6 +5,9 @@
     <dimen name="carousel_item_margin">8dp</dimen>
     <dimen name="carousel_item_radius">12dp</dimen>
 
+    <dimen name="carousel_spacing">16dp</dimen>
+    <dimen name="carousel_edge_spacing">32dp</dimen>
+
     <!-- Animation dimensions -->
     <dimen name="elevation_normal">4dp</dimen>
     <dimen name="elevation_raised">12dp</dimen>

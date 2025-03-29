@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Selected state (when category is active) -->
+    <item android:color="@color/sports_chip_background" android:state_selected="true"/>
+    <!-- Default state -->
+    <item android:color="?attr/colorSecondaryContainer"/>
+</selector>

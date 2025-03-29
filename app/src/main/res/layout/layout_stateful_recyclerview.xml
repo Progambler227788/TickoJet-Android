@@ -15,15 +15,20 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieLoading"
+            android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:lottie_rawRes="@raw/amongus"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sans_regular"
+            android:textColor="@color/deep_orange"
             android:text="Loading..."
             android:textSize="16sp"/>
     </LinearLayout>
@@ -36,11 +41,21 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <ImageView
-            android:id="@+id/emptyIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/empty"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/emptyHolder"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_margin="16dp"
+            android:radius="32dp"
+            app:cardElevation="16dp"
+            app:cardCornerRadius="12dp"
+            >
+            <ImageView
+                android:id="@+id/emptyIcon"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:src="@drawable/empty"/>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/emptyText"
@@ -48,6 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="No items found"
+            android:fontFamily="@font/noto_sans_regular"
+            android:textColor="@color/deep_orange"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -59,11 +76,22 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <ImageView
-            android:id="@+id/errorIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/error"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/errorHolder"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_margin="16dp"
+            android:radius="32dp"
+            app:cardElevation="16dp"
+            app:cardCornerRadius="12dp"
+            >
+            <ImageView
+                android:id="@+id/errorIcon"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:src="@drawable/error"/>
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/errorText"
@@ -71,6 +99,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="An error occurred"
+            android:fontFamily="@font/noto_sans_regular"
+            android:textColor="@color/deep_orange"
             android:textSize="16sp"/>
 
         <Button
@@ -78,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/noto_sans_regular"
             android:text="Retry"/>
     </LinearLayout>
 </merge>

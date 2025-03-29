@@ -39,6 +39,51 @@
     </style>
 
 
+    <!-- Text Styles -->
+    <style name="Text.EventTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Text.EventDetail" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Chip Style -->
+    <style name="Chip.EventCategory" parent="Widget.Material3.Chip.Assist">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="chipBackgroundColor">@color/category_chip_background</item>
+        <item name="android:textColor">@color/category_chip_text</item>
+    </style>
+
+    <!-- Text Styles -->
+    <style name="Text.EventTitle.TickoJet" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="Text.EventDetail.TickoJet" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="Chip.EventCategory.TickoJet" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="chipBackgroundColor">@drawable/chip_background</item> <!-- Reference the file -->
+        <item name="android:textColor">@drawable/chip_text</item> <!-- Reference the file -->
+        <item name="chipCornerRadius">8dp</item>
+    </style>
 
 
 

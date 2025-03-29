@@ -19,9 +19,11 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            // Removes unused resources
+            isShrinkResources = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
+                getDefaultProguardFile("proguard-android.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -73,6 +75,9 @@ dependencies {
 
     implementation ("org.java-websocket:Java-WebSocket:1.5.2")
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+
+
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
 
 

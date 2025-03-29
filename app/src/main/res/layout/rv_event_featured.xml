@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/a4"
+                android:src="@drawable/a2"
                 android:background="@drawable/gradient_overlay"
                 android:clipToOutline="true" />
         </androidx.cardview.widget.CardView>
