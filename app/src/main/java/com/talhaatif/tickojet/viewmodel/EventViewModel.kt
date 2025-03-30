@@ -10,6 +10,7 @@ import com.talhaatif.tickojet.repository.EventRepository
 import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.StripeIntentResponse
 import com.talhaatif.tickojet.responseModel.UpcomingEvents
 import com.talhaatif.tickojet.utils.NetworkUtils
 import com.talhaatif.tickojet.utils.Result
@@ -38,6 +39,9 @@ class EventViewModel(
     // New LiveData for booking state
     private val _bookingState = MutableLiveData<Result<BookingResponse>>()
     val bookingState: LiveData<Result<BookingResponse>> get() = _bookingState
+
+    private val _stripeIntent = MutableLiveData<Result<StripeIntentResponse>>()
+    val stripeIntent: LiveData<Result<StripeIntentResponse>> get() = _stripeIntent
 
 
 
@@ -110,6 +114,50 @@ class EventViewModel(
                 }
             } catch (e: Exception) {
                 _bookingState.value = Result.Error("Booking failed: ${e.message ?: "Unknown error"}")
+            }
+        }
+    }
+
+
+
+    fun createStripePaymentIntent(eventId: String, seatNumbers: List<String>) {
+        if (!NetworkUtils.isNetworkAvailable(context)) {
+            _stripeIntent.value = Result.Error("No internet connection")
+            return
+        }
+
+        _stripeIntent.value = Result.Loading
+        viewModelScope.launch {
+            try {
+                val result = eventRepository.createStripePaymentIntent(eventId, seatNumbers)
+                _stripeIntent.value = when (result) {
+                    is Result.Success -> result
+                    is Result.Error -> Result.Error(result.message)
+                    Result.Loading -> Result.Error("Unexpected loading state")
+                }
+            } catch (e: Exception) {
+                _stripeIntent.value = Result.Error("Failed to create payment intent: ${e.message ?: "Unknown error"}")
+            }
+        }
+    }
+
+    fun confirmStripeBooking(paymentIntentId: String, eventId: String, seatNumbers: List<String>) {
+        if (!NetworkUtils.isNetworkAvailable(context)) {
+            _bookingState.value = Result.Error("No internet connection")
+            return
+        }
+
+        _bookingState.value = Result.Loading
+        viewModelScope.launch {
+            try {
+                val result = eventRepository.confirmStripeBooking(paymentIntentId, eventId, seatNumbers)
+                _bookingState.value = when (result) {
+                    is Result.Success -> result
+                    is Result.Error -> Result.Error(result.message)
+                    Result.Loading -> Result.Error("Unexpected loading state")
+                }
+            } catch (e: Exception) {
+                _bookingState.value = Result.Error("Booking confirmation failed: ${e.message ?: "Unknown error"}")
             }
         }
     }

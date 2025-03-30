@@ -6,21 +6,25 @@ import android.content.Context
 import android.view.LayoutInflater
 import com.talhaatif.tickojet.databinding.LoadingDialogBinding
 
-class LoadingDialog(context: Context) {
-    private val dialog: Dialog = Dialog(context)
-    private val binding: LoadingDialogBinding = LoadingDialogBinding.inflate(LayoutInflater.from(context))
 
-    init {
-        dialog.setContentView(binding.root)
-        dialog.setCancelable(false)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+class LoadingDialog(context: Context) {
+    private val dialog: Dialog = Dialog(context).apply {
+        setContentView(LoadingDialogBinding.inflate(LayoutInflater.from(context)).root)
+        setCancelable(false)
+        window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
     fun show() {
-        dialog.show()
+        if (!dialog.isShowing) {
+            dialog.show()
+        }
     }
 
     fun dismiss() {
-        dialog.dismiss()
+        if (dialog.isShowing) {
+            dialog.dismiss()
+        }
     }
+
+    fun isShowing(): Boolean = dialog.isShowing
 }

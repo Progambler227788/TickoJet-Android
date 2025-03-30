@@ -6,6 +6,7 @@ import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.StripeIntentResponse
 import com.talhaatif.tickojet.responseModel.UpcomingEvents
 import com.talhaatif.tickojet.utils.Result
 import java.io.IOException
@@ -122,6 +123,74 @@ class EventRepository(private val tokenManager: TokenManager) {
             }
         } catch (e: IOException) {
             Result.Error("Network error: ${e.message}")
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "An unknown error occurred")
+        }
+    }
+
+    // Stripe Handling
+
+    suspend fun createStripePaymentIntent(
+        eventId: String,
+        seatNumbers: List<String>
+    ): Result<StripeIntentResponse> {
+        return try {
+            val token = tokenManager.getTokenForRequest()
+            if (token == null) {
+                return Result.Error("Not authenticated")
+            }
+
+            val seatNumbersString = seatNumbers.joinToString(",") { URLEncoder.encode(it, "UTF-8") }
+            val response = ApiClient.instance.createStripePaymentIntent(
+                token = "Bearer $token",
+                eventId = eventId,
+                seatNumbers = seatNumbersString
+            )
+
+            when {
+                response.isSuccessful -> {
+                    response.body()?.let { intentResponse ->
+                        Result.Success(intentResponse)
+                    } ?: Result.Error("Empty response body")
+                }
+                else -> {
+                    Result.Error(response.message())
+                }
+            }
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "An unknown error occurred")
+        }
+    }
+
+    suspend fun confirmStripeBooking(
+        paymentIntentId: String,
+        eventId: String,
+        seatNumbers: List<String>
+    ): Result<BookingResponse> {
+        return try {
+            val token = tokenManager.getTokenForRequest()
+            if (token == null) {
+                return Result.Error("Not authenticated")
+            }
+
+            val seatNumbersString = seatNumbers.joinToString(",") { URLEncoder.encode(it, "UTF-8") }
+            val response = ApiClient.instance.confirmStripeBooking(
+                token = "Bearer $token",
+                paymentIntentId = paymentIntentId,
+                eventId = eventId,
+                seatNumbers = seatNumbersString
+            )
+
+            when {
+                response.isSuccessful -> {
+                    response.body()?.let { bookingResponse ->
+                        Result.Success(bookingResponse)
+                    } ?: Result.Error("Empty response body")
+                }
+                else -> {
+                    Result.Error(response.message())
+                }
+            }
         } catch (e: Exception) {
             Result.Error(e.message ?: "An unknown error occurred")
         }

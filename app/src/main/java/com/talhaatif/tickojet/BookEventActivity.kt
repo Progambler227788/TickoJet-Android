@@ -54,7 +54,7 @@ class BookEventActivity : AppCompatActivity() {
 
 //        setupImageSlider()
 
-        setupImageSliderWithGlide()
+//        setupImageSliderWithGlide()
 
     }
 
@@ -97,7 +97,7 @@ class BookEventActivity : AppCompatActivity() {
 
 
     private fun setupImageSliderWithGlide() {
-        val imageResources = listOf(R.drawable.a1, R.drawable.a2, R.drawable.a3)
+        val imageResources = listOf(R.drawable.a1, R.drawable.a1, R.drawable.a1)
         val slideModels = ArrayList<SlideModel>()
 
         imageResources.forEach { imageRes ->

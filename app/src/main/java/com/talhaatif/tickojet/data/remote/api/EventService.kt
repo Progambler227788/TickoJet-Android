@@ -4,6 +4,7 @@ import com.talhaatif.tickojet.responseModel.Booking
 import com.talhaatif.tickojet.responseModel.BookingResponse
 import com.talhaatif.tickojet.responseModel.Event
 import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
+import com.talhaatif.tickojet.responseModel.StripeIntentResponse
 import com.talhaatif.tickojet.responseModel.UpcomingEvents
 import retrofit2.Response
 
@@ -36,6 +37,22 @@ interface EventService {
         @Header("Authorization") token: String,
         @Query("eventId") eventId: String,
         @Query("seatNumbers",encoded = true) seatNumbers: String // Accept List instead of String
+    ): Response<BookingResponse>
+
+
+    @POST("/api/user/profile/create-stripe-intent")
+    suspend fun createStripePaymentIntent(
+        @Header("Authorization") token: String,
+        @Query("eventId") eventId: String,
+        @Query("seatNumbers", encoded = true) seatNumbers: String
+    ): Response<StripeIntentResponse>
+
+    @POST("/api/user/profile/confirm-stripe-booking")
+    suspend fun confirmStripeBooking(
+        @Header("Authorization") token: String,
+        @Query("paymentIntentId") paymentIntentId: String,
+        @Query("eventId") eventId: String,
+        @Query("seatNumbers", encoded = true) seatNumbers: String
     ): Response<BookingResponse>
 
 
