@@ -7,8 +7,8 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/seatButton"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/noto_sans_regular"
         android:textColor="@color/white"
         android:textSize="12sp"
@@ -20,7 +20,7 @@
         app:rippleColor="?attr/colorSecondary"
         app:icon="@drawable/ic_seat_selected"
         app:iconTint="@color/white"
-        app:iconGravity="textTop"
+        app:iconGravity="start"
         app:iconPadding="2dp"
         android:backgroundTint="@color/selected_seat"
         android:gravity="center"

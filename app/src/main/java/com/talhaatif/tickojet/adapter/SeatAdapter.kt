@@ -41,7 +41,7 @@ class SeatAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(seat: Seat) {
-            binding.seatButton.text = seat.seatNumber
+            binding.seatButton.text = seat.seatNumber.replace("Seat-", "S-")
             binding.seatButton.isEnabled = seat.available
 
             // Disable the default state list animator

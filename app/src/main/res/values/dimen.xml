@@ -13,4 +13,7 @@
     <dimen name="elevation_raised">12dp</dimen>
     <dimen name="scale_normal">0.85f</dimen>
     <dimen name="scale_center">1.0f</dimen>
+
+
+    <dimen name="status_bar_height">8dp</dimen>
 </resources>

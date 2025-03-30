@@ -95,7 +95,7 @@ class SeatSelectionActivity : AppCompatActivity() {
             updateTotalPrice(seat, isSelected)
         }
         binding.recyclerSeats.adapter = seatAdapter
-        binding.recyclerSeats.layoutManager = GridLayoutManager(this, 6)
+        binding.recyclerSeats.layoutManager = GridLayoutManager(this, 4)
 
         // Handle buy button click
         binding.buyButton.setOnClickListener {
