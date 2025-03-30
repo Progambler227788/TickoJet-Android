@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
 import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.databinding.LayoutStatefulRecyclerviewBinding
 import kotlin.math.abs
@@ -238,40 +237,5 @@ class StatefulRecyclerView @JvmOverloads constructor(
     }
 }
 
-class LinearHorizontalSpacingDecoration(
-    private val spacing: Int,
-    private val edgeSpacing: Int
-) : RecyclerView.ItemDecoration() {
-
-    override fun getItemOffsets(
-        outRect: Rect,
-        view: View,
-        parent: RecyclerView,
-        state: RecyclerView.State
-    ) {
-        val position = parent.getChildAdapterPosition(view)
-
-        outRect.left = if (position == 0) edgeSpacing else spacing / 2
-        outRect.right = if (position == state.itemCount - 1) edgeSpacing else spacing / 2
-    }
-}
 
 
-class OptimizedItemAnimator : DefaultItemAnimator() {
-    init {
-        // Enable change animations only when necessary
-        supportsChangeAnimations = false
-    }
-
-    override fun animateChange(
-        oldHolder: RecyclerView.ViewHolder,
-        newHolder: RecyclerView.ViewHolder,
-        fromX: Int, fromY: Int,
-        toX: Int, toY: Int
-    ): Boolean {
-        // Disable change animations for better performance
-        dispatchChangeFinished(oldHolder, true)
-        dispatchChangeFinished(newHolder, false)
-        return false
-    }
-}

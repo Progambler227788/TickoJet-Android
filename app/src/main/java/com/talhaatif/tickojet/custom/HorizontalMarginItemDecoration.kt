@@ -1,4 +1,4 @@
-package com.talhaatif.tickojet.custom;
+package com.talhaatif.tickojet.custom
 
 import android.graphics.Rect
 import android.view.View

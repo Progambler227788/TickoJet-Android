@@ -1,5 +1,6 @@
 package com.talhaatif.tickojet.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -51,6 +52,7 @@ class CurrencyAdapter(
                 return results
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredList = results?.values as? List<String> ?: emptyList()
                 notifyDataSetChanged()

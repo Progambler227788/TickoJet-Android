@@ -2,7 +2,6 @@ package com.talhaatif.tickojet.responseModel
 
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
-import com.talhaatif.tickojet.adapter.EpochMillisDateAdapter
 import java.util.Date
 
 data class Booking(

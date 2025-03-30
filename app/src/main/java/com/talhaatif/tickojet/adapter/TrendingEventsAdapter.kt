@@ -40,7 +40,7 @@ class TrendingEventsAdapter(
 
             // Load image with Glide or Picasso
             val drawables = listOf(R.drawable.a1,R.drawable.a4, R.drawable.a5, R.drawable.event1)
-            event.imageUrl?.let { url ->
+            event.imageUrl?.let {
                 Glide.with(binding.root.context)
                     .load(drawables.random())
                     .placeholder(R.drawable.a3) // placeholder image

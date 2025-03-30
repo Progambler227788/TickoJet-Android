@@ -1,16 +1,21 @@
 package com.talhaatif.tickojet.data.remote.client
 
-import androidx.datastore.core.DataStore
+
+import com.talhaatif.tickojet.BuildConfig
 import com.talhaatif.tickojet.data.remote.api.BookingService
 import com.talhaatif.tickojet.data.remote.api.EventService
 import com.talhaatif.tickojet.data.remote.api.ProfileService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.prefs.Preferences
+
 
 object ApiClient {
-    private const val BASE_URL = "https://tickojet-8f5e27f79912.herokuapp.com/"
+
+
+    private const val BASE_URL = BuildConfig.API_BASE_URL
+
+
 
 
 

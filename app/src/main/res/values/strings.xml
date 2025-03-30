@@ -45,13 +45,14 @@
 
     <!-- Booking Details -->
     <string name="booking_date">Saturday, 15 Feb, 2025 12:34 PM</string>
-    <string name="booking_id">Booking ID: #12345678912323232343324234</string>
     <string name="tickets_label">Tickets</string>
-    <string name="ticket_quantity">1x Single</string>
     <string name="event_name">Event Name</string>
     <string name="event_date">Saturday, 15 Feb, 2025</string>
     <string name="amount_paid">Amount Paid</string>
-    <string name="amount_price">Rs 718</string>
+    <string name="booked_on">Booked on %1$s</string>
+    <string name="booking_id">Booking #%1$s</string>
+    <string name="ticket_quantity">%1$d tickets</string>
+    <string name="amount_price">Rs. %1$.2f</string>
 
     <!-- Login Screen Strings -->
     <string name="login_title">Login to Your Account</string>
@@ -74,14 +75,13 @@
     <string name="event_location_sample">Grand Park, New York</string>
 
 
-   <!--    Profile Screen-->
+    <!--    Profile Screen-->
     <string name="profile_picture">Profile Picture</string>
     <string name="edit_account">Edit Account</string>
     <string name="change_currency">Change Currency</string>
     <string name="change_city">Change City</string>
     <string name="change_gender">Change Gender</string>
     <string name="logout">Logout</string>
-
 
 
     <!-- Content Descriptions -->

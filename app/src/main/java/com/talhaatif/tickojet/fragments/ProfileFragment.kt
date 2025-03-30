@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import com.facebook.shimmer.Shimmer
 import com.google.android.material.snackbar.Snackbar
 import com.talhaatif.tickojet.LoginActivity
+import com.talhaatif.tickojet.UpdateProfileActivity
+import com.talhaatif.tickojet.bottomsheets.CityBottomSheet
 import com.talhaatif.tickojet.bottomsheets.CurrencyBottomSheet
 import com.talhaatif.tickojet.databinding.FragmentProfileBinding
 import com.talhaatif.tickojet.local.TokenManager
@@ -21,7 +23,7 @@ import com.talhaatif.tickojet.viewmodel.ProfileViewModel
 import com.talhaatif.tickojet.viewmodel.factory.ProfileViewModelFactory
 
 
-class ProfileFragment : Fragment(),CurrencyBottomSheet.CurrencySelectionListener  {
+class ProfileFragment : Fragment(),CurrencyBottomSheet.CurrencySelectionListener, CityBottomSheet.CitySelectionListener  {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -64,10 +66,15 @@ class ProfileFragment : Fragment(),CurrencyBottomSheet.CurrencySelectionListener
         binding.apply {
             editProfileBtn.setOnClickListener {
                 // Handle edit profile
+
+                Intent(requireContext(), UpdateProfileActivity::class.java).also {
+                    startActivity(it)
+                }
             }
 
             cityContainer.setOnClickListener {
                 // Handle city selection
+                showCityBottomSheet()
             }
 
             currencyContainer.setOnClickListener {
@@ -148,9 +155,22 @@ class ProfileFragment : Fragment(),CurrencyBottomSheet.CurrencySelectionListener
         bottomSheet.show(parentFragmentManager, "CurrencyBottomSheet")
     }
 
+    private fun showCityBottomSheet() {
+        val bottomSheet = CityBottomSheet().apply {
+            setSelectionListener(this@ProfileFragment)
+        }
+        bottomSheet.show(parentFragmentManager, "CurrencyBottomSheet")
+    }
+
     override fun onCurrencySelected(currency: String) {
         viewModel.updateCurrency(currency)
         observeCurrencyUpdate()
+    }
+
+    override fun onCitySelected(city: String) {
+
+        viewModel.updateLocation(city)
+        observeCityUpdate()
     }
 
     private fun observeCurrencyUpdate() {
@@ -163,6 +183,24 @@ class ProfileFragment : Fragment(),CurrencyBottomSheet.CurrencySelectionListener
                     // Refresh user data
                     viewModel.getUserDetails()
                     Snackbar.make(binding.root, "Currency updated successfully", Snackbar.LENGTH_SHORT).show()
+                }
+                is Result.Error -> {
+                    Snackbar.make(binding.root, result.message, Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun observeCityUpdate() {
+        viewModel.locationUpdateResult.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    // Show loading for currency update if needed
+                }
+                is Result.Success -> {
+                    // Refresh user data
+                    viewModel.getUserDetails()
+                    Snackbar.make(binding.root, "City updated successfully", Snackbar.LENGTH_SHORT).show()
                 }
                 is Result.Error -> {
                     Snackbar.make(binding.root, result.message, Snackbar.LENGTH_LONG).show()

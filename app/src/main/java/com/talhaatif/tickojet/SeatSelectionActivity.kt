@@ -1,8 +1,6 @@
 package com.talhaatif.tickojet
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -12,7 +10,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.talhaatif.tickojet.adapter.SeatAdapter
 import com.talhaatif.tickojet.bottomsheets.PaymentBottomSheet
-import com.talhaatif.tickojet.data.remote.client.WebSocketClient
 import com.talhaatif.tickojet.databinding.ActivityBookSeatsBinding
 import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.EventRepository
@@ -173,6 +170,7 @@ class SeatSelectionActivity : AppCompatActivity() {
         }
         eventViewModel.getEventById(eventId)
     }
+
 
     private fun updateTotalPrice(seat: Seat, isSelected: Boolean) {
         totalPrice = if (isSelected) {

@@ -2,6 +2,7 @@ package com.talhaatif.tickojet.repository
 
 import com.talhaatif.tickojet.data.remote.client.ApiClient
 import com.talhaatif.tickojet.local.TokenManager
+import com.talhaatif.tickojet.requestModel.UpdateRequest
 import com.talhaatif.tickojet.responseModel.UserInformation
 import com.talhaatif.tickojet.utils.Result
 
@@ -52,6 +53,61 @@ class ProfileRepository(private val tokenManager: TokenManager) {
                         400 -> "Invalid currency type"
                         401 -> "Unauthorized - Please login again"
                         else -> "Failed to update currency (HTTP ${response.code()})"
+                    }
+                )
+            }
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "Network error")
+        }
+    }
+
+    suspend fun updateLocation(location: String): Result<Map<String, String>> {
+        return try {
+            val token = tokenManager.getTokenForRequest() ?: return Result.Error("Not authenticated")
+
+            val response = ApiClient.profileInstance.updateLocation(
+                "Bearer $token",
+                location
+            )
+
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    Result.Success(it)
+                } ?: Result.Error("Empty response body")
+            } else {
+                Result.Error(
+                    when (response.code()) {
+                        400 -> "Invalid location"
+                        401 -> "Unauthorized - Please login again"
+                        else -> "Failed to update location (HTTP ${response.code()})"
+                    }
+                )
+            }
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "Network error")
+        }
+    }
+
+
+    suspend fun updateProfile(updateRequest: UpdateRequest): Result<Map<String, String>> {
+        return try {
+            val token = tokenManager.getTokenForRequest() ?: return Result.Error("Not authenticated")
+
+            val response = ApiClient.profileInstance.updateProfile(
+                "Bearer $token",
+                updateRequest
+            )
+
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    Result.Success(it)
+                } ?: Result.Error("Empty response body")
+            } else {
+                Result.Error(
+                    when (response.code()) {
+                        400 -> "Invalid data"
+                        401 -> "Unauthorized - Please login again"
+                        else -> "Failed to update profile (HTTP ${response.code()})"
                     }
                 )
             }

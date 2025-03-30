@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.ProfileRepository
+import com.talhaatif.tickojet.requestModel.UpdateRequest
 import com.talhaatif.tickojet.responseModel.UserInformation
 import com.talhaatif.tickojet.utils.NetworkUtils
 import com.talhaatif.tickojet.utils.Result
@@ -30,6 +31,17 @@ class ProfileViewModel(
     private val _currencyUpdateResult = MutableLiveData<Result<Map<String, String>>>()
     val currencyUpdateResult: LiveData<Result<Map<String, String>>> get() = _currencyUpdateResult
 
+
+    // currency
+    private val _locationUpdateResult = MutableLiveData<Result<Map<String, String>>>()
+    val locationUpdateResult: LiveData<Result<Map<String, String>>> get() = _locationUpdateResult
+
+   // profile update
+    private val _profileUpdateResult = MutableLiveData<Result<Map<String, String>>>()
+    val profileUpdateResult: LiveData<Result<Map<String, String>>> get() = _profileUpdateResult
+
+
+    // update the user currency
     fun updateCurrency(currencyType: String) {
         if (!NetworkUtils.isNetworkAvailable(context)) {
             _currencyUpdateResult.value = Result.Error("No internet connection")
@@ -42,6 +54,21 @@ class ProfileViewModel(
         }
     }
 
+    // update the user location
+    fun updateLocation(location: String) {
+        if (!NetworkUtils.isNetworkAvailable(context)) {
+            _locationUpdateResult.value  = Result.Error("No internet connection")
+            return
+        }
+
+        _locationUpdateResult.value = Result.Loading
+        viewModelScope.launch {
+            _locationUpdateResult.value  = profileRepository.updateLocation(location)
+        }
+    }
+
+
+    // fetch the user details
     fun getUserDetails() {
         if (!NetworkUtils.isNetworkAvailable(context)) {
             _userDetails.value = Result.Error("No internet connection")
@@ -58,6 +85,7 @@ class ProfileViewModel(
         }
     }
 
+    // Logout the user
     fun logout() {
         viewModelScope.launch {
             try {
@@ -65,6 +93,20 @@ class ProfileViewModel(
             } catch (e: Exception) {
                 _userDetails.value = Result.Error("Logout failed: ${e.message}")
             }
+        }
+    }
+
+
+
+    fun updateProfile(updateRequest: UpdateRequest) {
+        if (!NetworkUtils.isNetworkAvailable(context)) {
+            _profileUpdateResult.value = Result.Error("No internet connection")
+            return
+        }
+
+        _profileUpdateResult.value = Result.Loading
+        viewModelScope.launch {
+            _profileUpdateResult.value = profileRepository.updateProfile(updateRequest)
         }
     }
 }

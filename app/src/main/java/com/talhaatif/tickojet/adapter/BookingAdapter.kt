@@ -1,11 +1,10 @@
 package com.talhaatif.tickojet.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import com.talhaatif.tickojet.responseModel.Booking
-import com.talhaatif.tickojet.responseModel.SimplifiedTrendingEvent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +16,7 @@ import com.talhaatif.tickojet.utils.DateUtils
 
 
 class BookingAdapter(
-    private val context: Context,
+    private var context: Context,
     private var bookings: List<Booking>,
     private val onItemClick: (Booking) -> Unit = {}
 ) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
@@ -31,13 +30,12 @@ class BookingAdapter(
                 val bookingDate = DateUtils.formatEventDate(booking.createdAt)
                 val eventDate = DateUtils.formatEventDate(booking.eventDate)
 
-                // Set text values
-                tvBookingDate.text = "Booked on $bookingDate"
-                tvBookingId.text = "Booking #${booking.id.substring(0, 8)}"
-                tvTicketQuantity.text = "${booking.seats.size} tickets"
-                tvEventName.text = booking.eventName
+                tvBookingDate.text = context.getString(R.string.booked_on, bookingDate)
+                tvBookingId.text = context.getString(R.string.booking_id, booking.id.substring(0, 8))
+                tvTicketQuantity.text = context.getString(R.string.ticket_quantity, booking.seats.size)
+                tvAmountPrice.text = context.getString(R.string.amount_price, booking.payment.amount)
                 tvEventDate.text = eventDate
-                tvAmountPrice.text = "Rs. ${"%.2f".format(booking.payment.amount)}"
+
 
                 // Handle booking status
                 when (booking.status) {
@@ -70,8 +68,8 @@ class BookingAdapter(
                 Glide.with(itemView.context)
                     .load(drawables.random())
                     .centerCrop() // Ensure proper scaling
-                    .placeholder(R.drawable.a1) // Use a small placeholder
-                    .error(R.drawable.a1) // Use a small error image
+                    .placeholder(R.drawable.a1)
+                    .error(R.drawable.error)
                     .into(ivEventIcon)
 
 
@@ -81,8 +79,9 @@ class BookingAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun submitList(newBookings: List<Booking>) {
-        // Implement proper diffing if needed
+        // Implement proper diffing
         bookings = newBookings
         notifyDataSetChanged()
     }

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.databinding.SeatItemBinding
 import com.talhaatif.tickojet.responseModel.Seat
-import com.google.android.material.button.MaterialButton
 
 
 class SeatAdapter(
@@ -102,14 +101,3 @@ class SeatAdapter(
     fun getSelectedSeats(): List<Seat> = selectedSeats.toList()
 }
 
-// Extension function in same file or separate file
-private fun MaterialButton.setDefaultClickListenerBehavior(enable: Boolean) {
-    if (enable) {
-        setOnTouchListener(null)
-    } else {
-        setOnTouchListener { v, _ ->
-            v.performClick()
-            true // Consume the touch event
-        }
-    }
-}

@@ -4,9 +4,15 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24"
 }
 
+
+val apiBaseUrl: String = project.findProperty("API_BASE_URL") as? String ?: "https://default.url/"
+
+
 android {
     namespace = "com.talhaatif.tickojet"
     compileSdk = 35
+
+
 
     defaultConfig {
         applicationId = "com.talhaatif.tickojet"
@@ -15,6 +21,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
     }
 
     buildTypes {
@@ -40,11 +47,14 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+        buildConfig = true
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14" // For Kotlin 1.9.24
     }
+
+
 }
 
 dependencies {
