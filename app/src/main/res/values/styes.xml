@@ -87,6 +87,13 @@
 
 
 
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">@color/gray</item>
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="checkedIconVisible">true</item>
+    </style>
+
 
 
 
