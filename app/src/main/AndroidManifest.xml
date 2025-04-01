@@ -19,6 +19,9 @@
         android:theme="@style/Theme.TickoJet"
         tools:targetApi="31">
         <activity
+            android:name=".SearchEventsActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateProfileActivity"
             android:exported="false" />
         <activity
