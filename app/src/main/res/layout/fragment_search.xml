@@ -65,9 +65,9 @@
     <!-- Horizontal RecyclerView for Bookings -->
     <com.talhaatif.tickojet.custom.StatefulRecyclerView
         android:id="@+id/userSearchedEventsHolder"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         app:emptyIcon="@drawable/a1"
         app:emptyText="No trending events found"
         app:errorIcon="@drawable/error"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBar"
-        tools:listitem="@layout/rv_event_featured" />
+        tools:listitem="@layout/rv_searched_event" />
 
 
 

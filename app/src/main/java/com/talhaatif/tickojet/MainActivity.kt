@@ -9,6 +9,7 @@ import com.talhaatif.tickojet.databinding.ActivityMainBinding
 import com.talhaatif.tickojet.fragments.BookingsFragment
 import com.talhaatif.tickojet.fragments.DashBoardFragment
 import com.talhaatif.tickojet.fragments.ProfileFragment
+import com.talhaatif.tickojet.fragments.SearchFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +52,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, ProfileFragment())
+                        .commit()
+                    true
+                }
+                R.id.search_events -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, SearchFragment())
                         .commit()
                     true
                 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.EventRepository
 import com.talhaatif.tickojet.repository.SearchRepository
 import com.talhaatif.tickojet.responseModel.Event
@@ -14,6 +15,7 @@ import com.talhaatif.tickojet.utils.Result
 import kotlinx.coroutines.launch
 
 class SearchViewModel(private val searchRepository: SearchRepository,
+                      private val tokenManager: TokenManager,
                       private val context: Context
 ) : ViewModel() {
 
@@ -33,6 +35,5 @@ class SearchViewModel(private val searchRepository: SearchRepository,
         }
 
     }
-
 
 }
