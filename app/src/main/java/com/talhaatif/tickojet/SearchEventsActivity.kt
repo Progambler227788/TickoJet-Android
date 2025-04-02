@@ -106,7 +106,7 @@ class SearchEventsActivity : AppCompatActivity() {
 
         // Set up price range slider
         bottomSheetBinding.priceRangeSlider.addOnChangeListener { slider, value, fromUser ->
-            // Handle price range changes if needed
+            // Handle price range changes
         }
 
         // Apply button click
