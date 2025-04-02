@@ -90,14 +90,15 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@color/available_seat"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif"
                 android:text="@string/available"
                 android:textColor="@color/text_primary"
-                android:textSize="14sp"
-                android:fontFamily="@font/noto_sans_regular"
-                android:layout_marginStart="8dp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <!-- Reserved Seat Legend -->
@@ -112,14 +113,15 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@color/reserved_seat"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif"
                 android:text="@string/reserved"
-                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/text_primary"
-                android:textSize="14sp"
-                android:layout_marginStart="8dp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <!-- Selected Seat Legend -->
@@ -134,14 +136,15 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@color/selected_seat"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif"
                 android:text="@string/selected"
                 android:textColor="@color/text_primary"
-                android:textSize="14sp"
-                android:fontFamily="@font/noto_sans_regular"
-                android:layout_marginStart="8dp"/>
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -163,27 +166,27 @@
             android:id="@+id/totalPriceText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-medium"
             android:text="Total: Rs 0"
             android:textColor="@color/text_primary"
-            android:textSize="28sp"
-            android:fontFamily="@font/noto_sans_regular"
-            android:layout_marginEnd="16dp"/>
+            android:textSize="28sp" />
 
         <!-- Buy Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
             android:text="Buy Now"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:cornerRadius="8dp"
             app:elevation="4dp"
-            android:fontFamily="@font/noto_sans_regular"
-            app:rippleColor="?attr/colorSecondary"
-            android:backgroundTint="?attr/colorPrimary"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="24dp"/>
+            app:rippleColor="?attr/colorSecondary" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

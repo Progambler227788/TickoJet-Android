@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Oops, Failed!"
+        android:fontFamily="sans-serif-black"
         android:textSize="20sp"
         android:textColor="@color/error_red"
         android:textStyle="bold"
@@ -25,8 +26,9 @@
         android:layout_height="wrap_content"
         android:text="Your payment failed. Please check your internet connection then try again."
         android:gravity="center"
+        android:fontFamily="sans-serif"
         android:textSize="14sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="8dp"/>
 
     <Button
@@ -34,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Try Again"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/deep_orange_dark"
         android:textColor="@color/white"
         android:layout_marginTop="20dp"/>
 

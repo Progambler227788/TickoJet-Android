@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Search bookings..."
+                android:fontFamily="sans-serif"
                 android:backgroundTint="@color/glassmorphism_background"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"

@@ -12,6 +12,8 @@ import com.talhaatif.tickojet.databinding.BottomSheetCurrencyBinding
 
 class CurrencyBottomSheet : BottomSheetDialogFragment() {
 
+    // Signing a contract so that a class can implement this interface
+
     interface CurrencySelectionListener {
         fun onCurrencySelected(currency: String)
     }
@@ -34,6 +36,9 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
         val binding = BottomSheetCurrencyBinding.inflate(inflater, container, false)
 
         // Setup RecyclerView
+        // it will be called onCurrencySelected for a class that is implementing CurrencySelectionListener Interface
+        // Loose coupling, Bottom Sheet not depending on an activity, fragment that is implementing it
+        // It is polymorphism
         val adapter = CurrencyAdapter(currencies) { currency ->
             listener?.onCurrencySelected(currency.split(" ")[0])
             dismiss()
@@ -57,6 +62,8 @@ class CurrencyBottomSheet : BottomSheetDialogFragment() {
         return binding.root
     }
 
+
+    // Any class who wants to do some action when a currency is selected
     fun setSelectionListener(listener: CurrencySelectionListener) {
         this.listener = listener
     }

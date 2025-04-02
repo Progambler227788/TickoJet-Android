@@ -21,14 +21,14 @@
             android:id="@+id/chipCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="SPORTS"
             android:textColor="@color/white"
-            android:fontFamily="@font/noto_sans_regular"
             android:textSize="12sp"
             app:chipBackgroundColor="@color/deep_orange"
             app:chipCornerRadius="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Event Image Card -->
         <androidx.cardview.widget.CardView
@@ -69,12 +69,12 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-black"
+                android:maxLines="2"
                 android:text="Pak vs India Match"
                 android:textColor="@color/dark_gray"
-                android:fontFamily="@font/noto_sans_regular"
-                android:textSize="16sp"
-                android:maxLines="2"
-                android:ellipsize="end"/>
+                android:textSize="16sp" />
 
             <!-- Location Row -->
             <LinearLayout
@@ -94,10 +94,10 @@
                     android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
                     android:text="Lahore"
                     android:textColor="@color/gray"
-                    android:fontFamily="@font/noto_sans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!-- Date Row -->
@@ -118,10 +118,10 @@
                     android:id="@+id/tvDateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
                     android:text="Dec 31, 2023 • 7:00 PM"
                     android:textColor="@color/gray"
-                    android:fontFamily="@font/noto_sans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

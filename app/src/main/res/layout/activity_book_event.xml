@@ -37,12 +37,12 @@
                 android:id="@+id/tv_event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-black"
                 android:text="National Music Festival"
-                android:fontFamily="@font/noto_sans_regular"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:textStyle="bold" />
 
             <!-- Event Category -->
             <com.google.android.material.button.MaterialButton
@@ -50,12 +50,13 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="sans-serif-medium"
                 android:text="Music"
                 android:textColor="@color/theme_secondary"
-                android:backgroundTint="@android:color/transparent"
                 app:strokeColor="@color/theme_secondary"
-                app:strokeWidth="1dp"
-                android:layout_marginBottom="16dp"/>
+                app:strokeWidth="1dp" />
 
             <!-- Divider -->
             <View
@@ -82,20 +83,22 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1">
+
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
                         android:text="Monday, December 24, 2022"
                         android:textColor="@color/text_primary"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/noto_sans_regular"/>
+                        android:textSize="16sp" />
+
                     <TextView
-                        android:text="18:00 - 23:00 PM (GMT +07:00)"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="18:00 - 23:00 PM (GMT +07:00)"
                         android:textColor="@color/text_secondary"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/noto_sans_regular"/>
+                        android:textSize="14sp" />
 
                     <!-- Add to Calendar Button -->
                     <com.google.android.material.button.MaterialButton
@@ -103,11 +106,12 @@
                         style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans_regular"
-                        android:text="Add to My Calendar"
-                        android:textColor="@color/white"
+                        android:layout_marginBottom="16dp"
                         android:backgroundTint="@color/theme_primary"
-                        android:layout_marginBottom="16dp"/>
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif"
+                        android:text="Add to My Calendar"
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -131,22 +135,24 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1">
+
                     <TextView
                         android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
                         android:text="@string/grand_park_new_york_city_us"
                         android:textColor="@color/text_primary"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/noto_sans_regular"/>
+                        android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/tvFullLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
                         android:text="@string/grand_city_st_100_new_york_united_states"
                         android:textColor="@color/text_secondary"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/noto_sans_regular"/>
+                        android:textSize="14sp" />
 
                     <!-- See Location on Maps Button -->
                     <com.google.android.material.button.MaterialButton
@@ -154,13 +160,14 @@
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/noto_sans_regular"
+                        android:layout_marginBottom="16dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:fontFamily="sans-serif"
+                        android:textSize="12sp"
                         android:text="@string/see_location_on_maps"
                         android:textColor="@color/theme_secondary"
-                        android:backgroundTint="@android:color/transparent"
                         app:strokeColor="@color/theme_secondary"
-                        app:strokeWidth="1dp"
-                        android:layout_marginBottom="16dp"/>
+                        app:strokeWidth="1dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -184,12 +191,12 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/theme_primary"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/book_tickets"
         android:textColor="@color/white"
-        android:fontFamily="@font/noto_sans_regular"
-        android:backgroundTint="@color/theme_primary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

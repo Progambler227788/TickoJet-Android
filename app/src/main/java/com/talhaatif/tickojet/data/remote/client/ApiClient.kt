@@ -5,6 +5,7 @@ import com.talhaatif.tickojet.BuildConfig
 import com.talhaatif.tickojet.data.remote.api.BookingService
 import com.talhaatif.tickojet.data.remote.api.EventService
 import com.talhaatif.tickojet.data.remote.api.ProfileService
+import com.talhaatif.tickojet.data.remote.api.SearchService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -51,5 +52,14 @@ object ApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ProfileService::class.java)
+    }
+
+    val searchInstance: SearchService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(SearchService::class.java)
     }
 }
