@@ -54,7 +54,6 @@
             android:text="National Music Festival"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/event_favorite"
             app:layout_constraintStart_toStartOf="@id/event_image_card"
             app:layout_constraintTop_toBottomOf="@id/event_image_card" />

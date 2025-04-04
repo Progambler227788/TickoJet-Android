@@ -50,16 +50,59 @@ class UpcomingEventsAdapter
                         .into(ivEvent)
                 } ?: ivEvent.setImageResource(R.drawable.a1)
 
-                // Handle category chip
+                // Handling category chip
+
+
                 event.category?.let { category ->
                     chipCategory.text = category
-                    // You can add category-specific styling here
-                } ?: run { chipCategory.visibility = View.GONE }
+                    applyChipStyle(category)
+                    chipCategory.visibility = View.VISIBLE
+                } ?: run {
+                    chipCategory.visibility = View.GONE
+                }
+
 
 
             }
         }
+        private fun applyChipStyle(category: String) {
+            val context = binding.root.context
+            val categoryLower = category.lowercase()
+
+            val (bgColor, textColor, strokeColor) = when (categoryLower) {
+                "football", "sports" -> Triple(R.color.football_color, R.color.white, R.color.football_stroke)
+                "cricket" -> Triple(R.color.cricket_color, R.color.white, R.color.cricket_stroke)
+                "badminton" -> Triple(R.color.badminton_color, R.color.white, R.color.badminton_stroke)
+                "tennis" -> Triple(R.color.tennis_color, R.color.white, R.color.tennis_stroke)
+                "basketball" -> Triple(R.color.basketball_color, R.color.white, R.color.basketball_stroke)
+                "volleyball" -> Triple(R.color.volleyball_color, R.color.white, R.color.volleyball_stroke)
+                "hockey" -> Triple(R.color.hockey_color, R.color.white, R.color.hockey_stroke)
+
+                "movie", "cinema" -> Triple(R.color.movie_color, R.color.black, R.color.movie_stroke)
+                "concert", "performance" -> Triple(R.color.concert_color, R.color.white, R.color.concert_stroke)
+                "conference", "networking" -> Triple(R.color.conference_color, R.color.white, R.color.conference_stroke)
+                "workshop" -> Triple(R.color.workshop_color, R.color.white, R.color.workshop_stroke)
+                "exhibition" -> Triple(R.color.exhibition_color, R.color.white, R.color.exhibition_stroke)
+                "festival" -> Triple(R.color.festival_color, R.color.white, R.color.festival_stroke)
+                "charity" -> Triple(R.color.charity_color, R.color.white, R.color.charity_stroke)
+                "gaming" -> Triple(R.color.gaming_color, R.color.white, R.color.gaming_stroke)
+
+                else -> Triple(R.color.default_chip_color, R.color.black, R.color.default_chip_stroke)
+            }
+   // apply colors on stroke, text, background
+            with(binding.chipCategory) {
+                setChipBackgroundColorResource(bgColor)
+
+                setTextColor(context.getColor(textColor))
+                setChipStrokeColorResource(strokeColor)
+                chipStrokeWidth = 1.5f
+            }
+        }
+
+
     }
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingEventViewHolder {

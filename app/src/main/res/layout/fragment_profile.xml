@@ -200,9 +200,15 @@
                 android:id="@+id/logout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-medium"
+                android:backgroundTint="@color/theme_primary"
+                android:textColor="@color/white"
+                app:cornerRadius="50dp"
                 android:text="Logout"/>
+
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
