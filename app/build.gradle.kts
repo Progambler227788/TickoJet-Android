@@ -101,6 +101,12 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
 
+    // Image slider
+
+    implementation ("com.github.zhpanvip:bannerviewpager:3.5.11")
+
+
+
 
 
     // Testing

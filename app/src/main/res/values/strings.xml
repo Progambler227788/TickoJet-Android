@@ -86,10 +86,7 @@
 
     <!-- Content Descriptions -->
     <string name="cd_event_image">Event image</string>
-
-    <!-- Placeholders -->
-    <string name="placeholder_location">Location not available</string>
+    <string name="banner_image_desc">Banner Image</string>
     <string name="placeholder_date">Date not specified</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

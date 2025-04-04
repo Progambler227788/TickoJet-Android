@@ -15,8 +15,10 @@ import com.talhaatif.tickojet.viewmodel.EventViewModel
 import  com.talhaatif.tickojet.utils.Result
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.talhaatif.tickojet.adapter.viewholder.ImageBannerViewHolder
 import com.talhaatif.tickojet.repository.EventRepository
 import com.talhaatif.tickojet.local.TokenManager
+import com.talhaatif.tickojet.utils.CategoryStyleUtils
 import com.talhaatif.tickojet.viewmodel.factory.EventViewModelFactory
 
 class BookEventActivity : AppCompatActivity() {
@@ -56,6 +58,8 @@ class BookEventActivity : AppCompatActivity() {
 
 //        setupImageSliderWithGlide()
 
+        setupImageSliderWithBannerViewPager()
+
     }
 
     private fun fetchEventDetails(eventId: String) {
@@ -73,7 +77,12 @@ class BookEventActivity : AppCompatActivity() {
                         Log.d("Book Event Activity", "Event Details: ${it.data.id}")
                         val event = it.data
                         binding.tvEventName.text = event.title
-                        binding.btnEventCategory.text = event.category
+
+                        binding.btnEventCategory. apply {
+                            CategoryStyleUtils.applyCategoryStyle(this, event.category)
+                            text = event.category
+                        }
+
                         binding.btnAddToCalendar.text = "Add this to My Calendar"
                         binding.tvLocation.text = event.location
                         binding.tvFullLocation.text = event.location
@@ -96,39 +105,41 @@ class BookEventActivity : AppCompatActivity() {
     }
 
 
-    private fun setupImageSliderWithGlide() {
-        val imageResources = listOf(R.drawable.a1, R.drawable.a1, R.drawable.a1)
-        val slideModels = ArrayList<SlideModel>()
+    private fun setupImageSliderWithBannerViewPager() {
+        val imageResources = listOf(R.drawable.a1, R.drawable.a2, R.drawable.a3)
 
-        imageResources.forEach { imageRes ->
-            // Pre-load with Glide (optional transformations)
-            Glide.with(this)
-                .load(imageRes)
-                .override(800, 800)  // Downscale if needed
-                .preload()  // Cache the image
-
-            // Add to slider
-            slideModels.add(
-                SlideModel(
-                    imageRes,  // Still pass the resource ID
-                    scaleType = ScaleTypes.CENTER_CROP
-                )
-            )
-        }
-
-        binding.imageSlider.setImageList(slideModels)
+        binding.imageSlider
+            .setAdapter(ImageBannerViewHolder())
+            .create(imageResources)
     }
 
 
 
-    private fun setupImageSlider() {
-        val imageList = listOf(
-            SlideModel("https://bit.ly/2YoJ77H", ScaleTypes.CENTER_CROP),
-            SlideModel("https://bit.ly/2YoJ77H", ScaleTypes.CENTER_CROP),
-            SlideModel("https://bit.ly/2YoJ77H", ScaleTypes.CENTER_CROP)
-        )
-        binding.imageSlider.setImageList(imageList)
-    }
+//    private fun setupImageSliderWithGlide() {
+//        val imageResources = listOf(R.drawable.a1, R.drawable.a1, R.drawable.a1)
+//        val slideModels = ArrayList<SlideModel>()
+//
+//        imageResources.forEach { imageRes ->
+//            // Pre-load with Glide (optional transformations)
+//            Glide.with(this)
+//                .load(imageRes)
+//                .override(800, 800)  // Downscale if needed
+//                .preload()  // Cache the image
+//
+//            // Add to slider
+//            slideModels.add(
+//                SlideModel(
+//                    imageRes,  // Still pass the resource ID
+//                    scaleType = ScaleTypes.CENTER_CROP
+//                )
+//            )
+//        }
+//
+//        binding.imageSlider.setImageList(slideModels)
+//    }
+
+
+
 }
 // Notes for remembering
 

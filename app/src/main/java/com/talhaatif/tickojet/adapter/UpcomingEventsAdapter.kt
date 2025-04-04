@@ -12,6 +12,7 @@ import com.talhaatif.tickojet.BookEventActivity
 import com.talhaatif.tickojet.R
 import com.talhaatif.tickojet.databinding.RvEventBinding
 import com.talhaatif.tickojet.responseModel.UpcomingEvents
+import com.talhaatif.tickojet.utils.CategoryStyleUtils
 import com.talhaatif.tickojet.utils.DateUtils
 
 class UpcomingEventsAdapter
@@ -55,7 +56,12 @@ class UpcomingEventsAdapter
 
                 event.category?.let { category ->
                     chipCategory.text = category
-                    applyChipStyle(category)
+
+
+                    // applying style
+                    CategoryStyleUtils.applyCategoryStyle(binding.chipCategory, category)
+
+
                     chipCategory.visibility = View.VISIBLE
                 } ?: run {
                     chipCategory.visibility = View.GONE
