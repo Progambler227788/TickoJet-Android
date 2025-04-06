@@ -68,7 +68,7 @@ class BookingsFragment : Fragment() {
                 }
                 is Result.Error -> {
                     binding.userBookingsRecyclerView.showError()
-                    // Show error message if needed
+                    // Show error message
                 }
             }
         }

@@ -63,9 +63,7 @@ class SearchFragment : Fragment() {
 
     private fun setupRecyclerView() {
         adapter = SearchEventsAdapter { event ->
-            // Handle event click
-            // You can use Navigation Component here if you're using it
-            // findNavController().navigate(R.id.action_searchFragment_to_eventDetailFragment)
+
         }
 
         binding.userSearchedEventsHolder.recyclerView.apply {

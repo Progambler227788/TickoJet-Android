@@ -67,7 +67,7 @@ class BookingAdapter(
 
                 Glide.with(itemView.context)
                     .load(drawables.random())
-                    .centerCrop() // Ensure proper scaling
+                    .centerCrop()
                     .placeholder(R.drawable.a1)
                     .error(R.drawable.error)
                     .into(ivEventIcon)

@@ -12,7 +12,6 @@ import com.talhaatif.tickojet.utils.Result
 import java.io.IOException
 import java.net.URLEncoder
 
-// EventRepository.kt
 class EventRepository(private val tokenManager: TokenManager) {
     suspend fun getTrendingEvents(): Result<List<SimplifiedTrendingEvent>> {
         return try {

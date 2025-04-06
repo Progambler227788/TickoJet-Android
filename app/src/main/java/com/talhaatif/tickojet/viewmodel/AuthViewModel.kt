@@ -9,7 +9,9 @@ import com.talhaatif.tickojet.local.TokenManager
 import com.talhaatif.tickojet.repository.AuthRepository
 import com.talhaatif.tickojet.utils.NetworkUtils
 import com.talhaatif.tickojet.utils.Result
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AuthViewModel(
     private val authRepository: AuthRepository,
@@ -89,8 +91,13 @@ class AuthViewModel(
 
         viewModelScope.launch {
             try {
-                val response = authRepository.signup(userName, email, password)
-                if (response.isSuccessful) {
+                // it will context switching here to IO thread  b
+                val response = withContext(Dispatchers.IO) {
+                    authRepository.signup(userName, email, password)
+
+                }
+
+                    if (response.isSuccessful) {
                     _signupState.value = Result.Success(true)
                 } else {
                     _signupState.value = Result.Error("Signup failed: ${response.message()}")

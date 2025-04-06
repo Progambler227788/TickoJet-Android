@@ -97,7 +97,7 @@ class StatefulRecyclerView @JvmOverloads constructor(
         )
     }
 
-    // Carousel effect
+    //  Old Carousel effect
     fun enableCarouselEffect(scale: Float = 0.8f) {
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -127,6 +127,7 @@ class StatefulRecyclerView @JvmOverloads constructor(
             }
         })
     }
+
     // Optimized carousel effect
     fun enableSmoothCarouselEffect(scale: Float = 0.85f, elevation: Float = 8f) {
         recyclerView.apply {

@@ -36,6 +36,7 @@ class SeatAdapter(
         notifyDataSetChanged() // More efficient than multiple notifyItemChanged calls
     }
 
+    // Seat View Holder
     inner class SeatViewHolder(private val binding: SeatItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 

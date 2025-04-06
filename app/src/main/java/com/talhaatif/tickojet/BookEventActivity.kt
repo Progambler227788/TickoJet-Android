@@ -115,28 +115,6 @@ class BookEventActivity : AppCompatActivity() {
 
 
 
-//    private fun setupImageSliderWithGlide() {
-//        val imageResources = listOf(R.drawable.a1, R.drawable.a1, R.drawable.a1)
-//        val slideModels = ArrayList<SlideModel>()
-//
-//        imageResources.forEach { imageRes ->
-//            // Pre-load with Glide (optional transformations)
-//            Glide.with(this)
-//                .load(imageRes)
-//                .override(800, 800)  // Downscale if needed
-//                .preload()  // Cache the image
-//
-//            // Add to slider
-//            slideModels.add(
-//                SlideModel(
-//                    imageRes,  // Still pass the resource ID
-//                    scaleType = ScaleTypes.CENTER_CROP
-//                )
-//            )
-//        }
-//
-//        binding.imageSlider.setImageList(slideModels)
-//    }
 
 
 

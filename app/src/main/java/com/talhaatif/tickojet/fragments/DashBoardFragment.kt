@@ -93,6 +93,7 @@ class DashBoardFragment : Fragment() {
             retryAction = { loadTrendingEvents() }
 
             // 5. Enable hardware acceleration
+            // It forces hardware acceleration for rendering the RecyclerView.
             recyclerView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
         }
     }
