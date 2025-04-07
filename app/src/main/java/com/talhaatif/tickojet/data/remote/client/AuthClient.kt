@@ -1,5 +1,6 @@
 package com.talhaatif.tickojet.data.remote.client
 
+import com.talhaatif.tickojet.BuildConfig
 import com.talhaatif.tickojet.data.remote.api.AuthApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -7,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object AuthClient {
 
-    private const val BASE_URL = "https://tickojet-8f5e27f79912.herokuapp.com/"
+    private const val BASE_URL = BuildConfig.API_BASE_URL
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->

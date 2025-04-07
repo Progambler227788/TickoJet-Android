@@ -3,6 +3,7 @@ package com.talhaatif.tickojet.data.remote.client
 
 import android.util.Log
 import com.google.gson.Gson
+import com.talhaatif.tickojet.BuildConfig
 import com.talhaatif.tickojet.responseModel.SeatUpdate
 import okhttp3.*
 import java.util.concurrent.TimeUnit
@@ -20,7 +21,7 @@ class WebSocketClient(
 
     fun connect() {
         val request = Request.Builder()
-            .url("wss://tickojet-8f5e27f79912.herokuapp.com/ws")
+            .url(BuildConfig.API_BASE_URL)
             .build()
 
         webSocket = client.newWebSocket(request, object : WebSocketListener() {
