@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.talhaatif.tickojet" />
+                  <option name="mobileSdkAppId" value="1:904683133531:android:46cea1b6420ed64f167d7e" />
+                  <option name="projectId" value="ticko-jet" />
+                  <option name="projectNumber" value="904683133531" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

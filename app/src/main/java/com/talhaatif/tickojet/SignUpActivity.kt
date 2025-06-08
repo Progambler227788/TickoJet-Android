@@ -67,7 +67,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
                 is Result.Success -> {
                     // Hide loading spinner
-                    loadingDialog.show()
+                    loadingDialog.dismiss()
 
                     // Navigate to LoginActivity on successful signup
                     val intent = Intent(this, LoginActivity::class.java)
@@ -76,7 +76,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
                 is Result.Error -> {
                     // Hide loading spinner
-                    loadingDialog.show()
+                    loadingDialog.dismiss()
 
                     // Show error message
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()

@@ -1,5 +1,6 @@
 package com.talhaatif.tickojet.repository
 
+import android.util.Log
 import com.talhaatif.tickojet.data.remote.client.AuthClient
 import com.talhaatif.tickojet.requestModel.LoginRequest
 import com.talhaatif.tickojet.requestModel.SignupRequest
@@ -18,5 +19,11 @@ class AuthRepository {
         val request = LoginRequest(userName, password)
         return AuthClient.authApi.login(request)
     }
+
+    suspend fun registerFcmToken(userId: String, token: String): Response<String>  {
+        Log.d("Auth Repository", "registerFcmToken: $userId, $token")
+        return AuthClient.authApi.registerFcmToken(userId, token)
+    }
+
 
 }

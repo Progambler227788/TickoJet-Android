@@ -1,5 +1,6 @@
 package com.talhaatif.tickojet.responseModel
 
 data class LoginResponse(
-    val token: String // JWT token
+    val token: String, // JWT token
+    val userId: String
 )

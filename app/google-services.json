@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "904683133531",
+    "project_id": "ticko-jet",
+    "storage_bucket": "ticko-jet.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904683133531:android:46cea1b6420ed64f167d7e",
+        "android_client_info": {
+          "package_name": "com.talhaatif.tickojet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq8u8XdTZX8pw1R-zGNSvUW23CI-67Qo0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

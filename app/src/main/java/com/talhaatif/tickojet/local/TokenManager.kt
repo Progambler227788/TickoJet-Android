@@ -43,4 +43,17 @@ class TokenManager(private val context: Context) {
     suspend fun getTokenForRequest(): String? {
         return getToken().first()
     }
+
+
+    fun saveFcmToken(token: String) {
+
+        val sharedPref = context.getSharedPreferences("fcm", Context.MODE_PRIVATE)
+        sharedPref.edit().putString("fcm_token", token).apply()
+    }
+
+    fun getFcmToken(): String? {
+        val sharedPref = context.getSharedPreferences("fcm", Context.MODE_PRIVATE)
+        return sharedPref.getString("fcm_token", null)
+    }
+
 }

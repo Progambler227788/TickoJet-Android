@@ -1,6 +1,7 @@
 package com.talhaatif.tickojet.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,31 +33,50 @@ class AuthViewModel(
     val errorMessage: LiveData<String> get() = _errorMessage
 
     fun login(userName: String, password: String) {
-        // Input validation
         if (userName.isEmpty() || password.isEmpty()) {
             _loginState.value = Result.Error("Please fill in all fields")
             return
         }
 
-        // Network availability check
         if (!NetworkUtils.isNetworkAvailable(context)) {
             _loginState.value = Result.Error("No internet connection. Please turn on the internet.")
             return
         }
 
-        // Start loading
         _loginState.value = Result.Loading
 
         viewModelScope.launch {
             try {
                 val response = authRepository.login(userName, password)
+
                 if (response.isSuccessful) {
                     val token = response.body()?.token
-                    if (token != null) {
-                        tokenManager.saveToken(token) // Save token to DataStore
+                    val userId = response.body()?.userId
+
+                    if (!token.isNullOrEmpty() && !userId.isNullOrEmpty()) {
+                        tokenManager.saveToken(token)
                         _loginState.value = Result.Success(token)
+
+                        val fcmToken = tokenManager.getFcmToken()
+                        Log.d("AuthViewModel", "FCM Token: $fcmToken")
+                        Log.d("AuthViewModel", "User ID: $userId")
+
+                        if (!fcmToken.isNullOrEmpty()) {
+                            try {
+                                val fcmResponse = authRepository.registerFcmToken(userId, fcmToken)
+                                if (fcmResponse.isSuccessful) {
+                                    Log.d("FCM", "FCM token registered successfully.")
+                                } else {
+                                    Log.e("FCM", "FCM registration failed: ${fcmResponse.message()}")
+                                }
+                            } catch (e: Exception) {
+                                Log.e("FCM", "Exception registering FCM token: ${e.message}")
+                            }
+                        } else {
+                            Log.w("FCM", "No FCM token found in local storage")
+                        }
                     } else {
-                        _loginState.value = Result.Error("Invalid credentials")
+                        _loginState.value = Result.Error("Invalid login response from server")
                     }
                 } else {
                     _loginState.value = Result.Error("Login failed: ${response.message()}")
@@ -66,6 +86,7 @@ class AuthViewModel(
             }
         }
     }
+
 
     fun signup(userName: String, email: String, password: String, confirmPassword: String) {
         // Input validation

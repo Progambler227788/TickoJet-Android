@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24"
+    alias(libs.plugins.google.gms.google.services)
 }
 
 
@@ -104,6 +105,11 @@ dependencies {
     // Image slider
 
     implementation ("com.github.zhpanvip:bannerviewpager:3.5.11")
+
+    // firebase notifications
+
+    implementation ("com.google.firebase:firebase-messaging:23.4.0")
+
 
 
 
