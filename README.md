@@ -12,6 +12,7 @@
 - 💳 Pay using **Wallet** or **Stripe**
 - 🙋‍♂️ Update **User Profile**
 - 📱 Responsive and intuitive UI
+- 🔔 Notification system (event reminders, booking status)
 
 ---
 
@@ -48,7 +49,6 @@
 
 - 🎨 Updating the UI for modern look
 - ❌ Cancel Ticket functionality (already available in backend)
-- 🔔 Notification system (event reminders, booking status)
 - 🖼️ Store images using **AWS S3**
 - 🧑‍🤝‍🧑 Referral Program
 - 🧹 Code Refactoring for performance
