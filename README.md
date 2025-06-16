@@ -30,8 +30,6 @@
 |-------|---------|--------|----------------|
 | ![](https://i.postimg.cc/62T3b8Nw/login-Screen.png) | ![](https://i.postimg.cc/BtLbxPgB/sign-Up-Screen.png) | ![](https://i.postimg.cc/1fDzdxbg/stripe-Implementation.png) | ![](https://i.postimg.cc/dhv0PHK5/update-Profile.png) |
 
-> View more screenshots in the [`screens/`](#) directory or [PostImage album](#).
-
 ---
 
 ## 🛠️ Tech Stack
